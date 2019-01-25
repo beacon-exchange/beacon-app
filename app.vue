@@ -1,18 +1,63 @@
 <style lang="scss" scoped>
-p {
-  font-size: 2em;
-  text-align: center;
+:root { --stghgt: 3em; }
+* {  box-sizing: border-box; }
+body, p {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+}
+#publayer {
+  margin-top: 3em;
+  padding: 1em 1ch;
+}
+#wallet, #beacon, #pois, #itts, #settings {
+  border: 1px solid red;
+  padding: 1em 1ch;
+  /* margin: 1em 1ch; */
+  position: fixed;
+}
+#wallet, #beacon, #pois, #itts {
+  height: 100vh;
+  display: inline-block;
+  top: var(--stghgt);
+}
+#wallet, #beacon {
+  left: 0;
+}
+#pois, #itts {
+  right: 0;
+}
+#wallet {
+  width: 20ch;
+}
+#beacon {
+  width: 30ch;
+}
+#pois {
+  width: 25ch;
+}
+#itts {
+  width: 35ch;
+}
+#settings {
+  height: 3em;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 </style>
 
 <template>
   <div>
-    <p>Public Layer!</p>
-    <Wallet/>
-    <Beacon/>
-    <POIs/>
-    <ITTs/>
-    <Settings/>
+    <Wallet id="wallet"/>
+    <Beacon id="beacon"/>
+    <POIs id="pois"/>
+    <ITTs id="itts"/>
+    <Settings id="settings"/>
+    <div id="publayer">
+      <p>Public Layer!</p>
+    </div>
   </div>
 </template>
 
