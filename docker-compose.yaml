@@ -4,4 +4,7 @@ services:
   app:
     build: .
     network_mode: host
-    command: vue serve
+    volumes:
+      - .:/app
+    command:
+      - serve

@@ -1,6 +1,7 @@
-FROM node:lts-alpine
+FROM node:alpine
 
 RUN npm install -g @vue/cli @vue/cli-service-global
+RUN npm install sass-loader node-sass
 
 WORKDIR /app
 
@@ -11,3 +12,5 @@ WORKDIR /app
 #RUN npm install
 
 COPY . .
+
+ENTRYPOINT ["vue"]
