@@ -8,7 +8,7 @@ body, p {
   -webkit-margin-end: 0;
 }
 #publayer {
-  margin-top: 3em;
+  margin-top: var(--stghgt);
   padding: 1em 1ch;
 }
 #wallet, #beacon, #pois, #itts, #settings {
