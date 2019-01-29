@@ -1,0 +1,52 @@
+#FAKEROOT { --settingsoffset: 3em; } /* change me to real root */
+* { box-sizing: border-box; }
+body, p {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+}
+#publayer, #wallet, #beacon, #pois, #itts, #settings {
+  position: fixed;
+  padding: 1em 2ch;
+}
+#publayer {
+  bottom: var(--settingsoffset); /* ontoggle changes to bottom */
+  left: 0;
+  top: 0; /* ontoggle changes to top */
+  right: 0;
+  width: 100%;
+  border: 1px solid blue;
+}
+#settings {
+  bottom: 0; /* ontoggle changes to bottom */
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: var(--settingsoffset);
+  border: 1px solid green;
+}
+#wallet, #beacon, #pois, #itts {
+  top: var(--settingsoffset); /* ontoggle changes to top: var(--settingsoffset) */
+  bottom: calc(2 * var(--settingsoffset)); /* ontoggle changes to bottom: var(--settingsoffset); */
+  display: inline-block;
+  border: 1px solid red;
+}
+#wallet, #beacon {
+  left: 0;
+}
+#pois, #itts {
+  right: 0;
+}
+#wallet {
+  width: 20ch;
+}
+#beacon {
+  width: 30ch;
+}
+#pois {
+  width: 25ch;
+}
+#itts {
+  width: 35ch;
+}

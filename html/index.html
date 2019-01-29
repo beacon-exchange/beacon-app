@@ -1,0 +1,39 @@
+<template>
+  <div id="FAKEROOT">
+    <Wallet id="wallet"/>
+    <Beacon id="beacon"/>
+    <POIs id="pois"/>
+    <ITTs id="itts"/>
+    <Settings id="settings"/>
+    <div id="publayer">
+      <p>Public Layer!</p>
+    </div>
+  </div>
+</template>
+
+<!--script>
+import Wallet from './wallet.vue'
+import Beacon from './beacon.vue'
+import POIs from './pois.vue'
+import ITTs from './itts.vue'
+import Settings from './settings.vue'
+
+export default {
+  components: {
+    Wallet, Beacon, POIs, ITTs, Settings
+  },
+  beforeMount() {
+    var link_id = '__FONTAWESOME_LINK__';
+    if (!document.getElementById(link_id)) {
+      var head  = document.getElementsByTagName('head')[0];
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.id = link_id;
+      link.href = 'https://use.fontawesome.com/releases/v5.6.3/css/all.css';
+      link.integrity = 'sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/';
+      link.crossOrigin = 'anonymous';
+      head.appendChild(link);
+    }
+  }
+}
+</script-->
