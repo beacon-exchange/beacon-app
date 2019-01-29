@@ -1,3 +1,5 @@
 <template>
-  <p>I am Settings</p>
+  <div id="settingsFAKEROOT">
+    <p>Settings:</p><i class='fas fa-window-maximize'></i>
+  </div>
 </template>
