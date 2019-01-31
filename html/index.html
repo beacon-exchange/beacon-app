@@ -1,39 +1,153 @@
-<template>
+<!-- Reference: 80-character line... 80-character line... 80-character line. -->
+
+<!DOCTYPE html> <!-- Requires HTML5 or later. Not XHTML. -->
+<html lang="en">
+<head>
+
+<!-- ========== ANALYTICS ================================================== -->
+
+  <!-- May want to add some tracking & analytics scripts here. -->
+
+<!-- ========== METADATA =================================================== -->
+
+  <!-- Robots.txt specifies exclusions & sitemap.xml specifies inclusions -->
+  <meta name="robots" content="index, follow"> <!-- Default/Reminder -->
+  <!-- Index = "crawl this" & follow = "pass link equity to all links" -->
+  <base target="_self"> <!-- href="https://thisWebsite.com/" -->
+  <!-- Placeholder for FavIcons when Assets folder is set up to hold them -->
+  <link rel="icon" href="assets/fav/icon.png" type="image/png" sizes="512x512">
+  <!--
+  <link rel="icon" href="assets/fav/icon65.png" type="image/png" sizes="65x65">
+  <link rel="icon" href="assets/fav/icon32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="assets/fav/icon16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="assets/fav/icon16.ico" type="image/ico" sizes="16x16">
+  -->
+  <!-- Although currently no major browser supports the sizes attribute, (i.e.
+       will be ignored,) it is still considered good hygiene to include them.
+    -->
+  <meta name="theme-color" content="#808080″> <!-- Candy for Android Chrome -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset='utf-8'>
+  <!-- https://developers.google.com/fonts/docs/getting_started
+       https://developers.google.com/fonts/docs/technical_considerations
+       StackOverflow recommends standard over @import due to load deferral
+       Supposedly, consolidating these into one request improves load time
+       Further, experimenting with direct integration with stylesheet
+       (See notes on this method's advantages and disadvantages in style.scss)
+       Open Sans is for body text (400=standard, 700=bold, i=italic)
+       Use in lieu of interpolated bold font-weight & italic font-style
+       Oswald semibold is for headings & titles
+       If performance suffers, remove 400i, 700, & 700i (interpolate instead)
+       Alternatively, woff2 files uploaded to server but not yet integrated
+    -->
+  <!--
+  <link rel="stylesheet" href=
+    "https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Oswald:600"
+  >
+  -->
+
+  <!-- SEO Note: Use numbers, dates, variants, punctuation, & action words. -->
+  
+  <!-- SEO Note: Appears on tab next to favicon, & default bookmark name -->
+  <title>Beacon App - Decentralized Asset Exchange Protocol | Home</title>
+  <meta name="author" content="Beacon">
+  <!-- SEO Note (2018Q1): Keywords should be 10-20 words long. -->
+  <meta name="keywords" content=
+    "Cryptocurrency Exchange,
+    Electronic Trading,
+    Decentralized Exchange,
+    Peer-to-Peer,
+    White Paper,
+    Cryptocurrency,
+    Blockchain"
+  > <!-- SEO Note (2018Q1): Title should not exceed 50 characters. -->
+  <!-- SEO Note (2018Q1): Description should be 150-300 characters long. -->
+  <meta name="description" content=
+    "Beacon is a protocol for peer-to-peer exchange of cryptocurrency assets.
+    Trading on Beacon is permissionless, fee-free, decentralized, fast and
+    impartial!"
+  >
+
+<!-- ========== CASCADING STYLE SHEETS ===================================== -->
+
+  <!-- Font Awesome -->
+  <link rel='stylesheet'
+        href='https://use.fontawesome.com/releases/v5.6.3/css/all.css'
+        integrity='sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/'
+        crossorigin='anonymous'>
+  <!-- Need ruby to build scss ... -->
+  <link rel="stylesheet" href="styles.css">
+  
+<!-- ========== OTHER BEFORE-DOCUMENT LOAD SCRIPTS ========================= -->
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+          crossorigin="anonymous"></script>
+  <!--
+  <script src="main.js"></script>
+  -->
+  
+</head>
+<body>
   <div id="FAKEROOT">
-    <Wallet id="wallet"/>
-    <Beacon id="beacon"/>
-    <POIs id="pois"/>
-    <ITTs id="itts"/>
-    <Settings id="settings"/>
-    <div id="publayer">
-      <p>Public Layer!</p>
+    <div id="settings" class="rad1">
+      <ul>
+        <li>Settings Bar:</li>
+        <li>
+          <div>
+            <input type="radio" name="slim" id="rad1" checked>
+            <label for="rad1"><i class='fas top'>&#xf2d0</i></label>
+          </div><!-- must have no gap between elements here --><div>
+            <input type="radio" name="slim" id="rad2">
+            <label for="rad2"><i class='fas bottom'>&#xf2d0</i></label>
+          </div>
+        </li>
+        <!-- add others later -->
+      </ul>
+    </div>
+    <div id="publayer" class="rad1">
+      <nav><p>Public Layer Menu/Nav</p></nav>
+      <div>
+        <p>Public Layer Content</p>
+      </div>
+    </div>
+    <div id="beacon" class="rad1">
+      <div class="handle">
+        <p><i class='fas'>&#xf103;</i> Beacon <i class='fas'>&#xf103;</i></p>
+      </div>
+      <p>Beacon Content ... More Beacon Content ... More Beacon Content ... </p>
+    </div>
+    <div id="itts" class="rad1">
+      <div class="handle">
+        <p><i class='fas'>&#xf103;</i> ITTs <i class='fas'>&#xf103;</i></p>
+      </div>
+      <p>ITTs Content ... More ITTs Content ... More ITTs Content ... </p>
+    </div>
+    <div id="pois" class="rad1">
+      <div class="handle">
+        <p><i class='fas'>&#xf103;</i> POIs <i class='fas'>&#xf103;</i></p>
+      </div>
+      <p>POIs Content ... More POIs Content ... More POIs Content ... </p>
+    </div>
+    <div id="wallet" class="rad1">
+      <div class="handle">
+        <p><i class='fas'>&#xf103;</i> Wallet <i class='fas'>&#xf103;</i></p>
+      </div>
+      <p>Wallet Content ... More Wallet Content ... More Wallet Content ... </p>
     </div>
   </div>
-</template>
+    
+<!-- ========== AFTER-DOCUMENT LOAD SCRIPTS ================================ -->
 
-<!--script>
-import Wallet from './wallet.vue'
-import Beacon from './beacon.vue'
-import POIs from './pois.vue'
-import ITTs from './itts.vue'
-import Settings from './settings.vue'
+  <!-- Put scripts at the end to speed up page loading for older browsers -->
+  <script src="slim.js"></script>
+  <!-- Just in case the user disabled scripts on their browser... -->
+  <noscript>Something on this page not working?
+     If available, try enabling scripts on your browser.
+     Otherwise, it's possible that your browser doesn't support JavaScript.
+  </noscript>
+    
+</body>
+</html>
 
-export default {
-  components: {
-    Wallet, Beacon, POIs, ITTs, Settings
-  },
-  beforeMount() {
-    var link_id = '__FONTAWESOME_LINK__';
-    if (!document.getElementById(link_id)) {
-      var head  = document.getElementsByTagName('head')[0];
-      var link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.id = link_id;
-      link.href = 'https://use.fontawesome.com/releases/v5.6.3/css/all.css';
-      link.integrity = 'sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/';
-      link.crossOrigin = 'anonymous';
-      head.appendChild(link);
-    }
-  }
-}
-</script-->
+<!-- Reference: 80-character line... 80-character line... 80-character line. -->
