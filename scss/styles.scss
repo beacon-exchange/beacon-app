@@ -1,14 +1,22 @@
 // ========== Reference: 80-character line =====================================
 
-:root { --settingsoffset: 3em; }
+:root { // remember to set fallbacks when custom properties are applied
+  --settingsoffset: 3em;
+  --topbottompaddg: 1em;
+  --leftrightpaddg: 2ch;
+  --defaultpadding: var(--topbottompaddg) var(--leftrightpaddg);
+  --defsplitpaddng: calc(var(--topbottompaddg) / 2)
+                    calc(var(--leftrightpaddg) / 2);
+}
 * { box-sizing: border-box; }
 body, p { // consider using Autoprefixer, e.g. might need for transform
   -webkit-margin-before: 0;
   -webkit-margin-after: 0;
   -webkit-margin-start: 0;
   -webkit-margin-end: 0;
+  margin: 0;
 }
-p { padding: 1em 2ch; }
+p { padding: var(--defaultpadding, 1em); }
 #settings, #publayer, #beacon, #itts, #pois, #wallet { position: fixed; }
 #settings {
   &.rad1 { top: 0; }
@@ -19,8 +27,12 @@ p { padding: 1em 2ch; }
   height: var(--settingsoffset);
   border: 1px solid green;
   * { display: inline-block; }
-  ul { margin: 0; padding: 0.5em; }
-  li { padding: 0.5em;
+  ul {
+    margin: 0;
+    padding: var(--defsplitpaddng, 0.5em);
+  }
+  li {
+    padding: var(--defsplitpaddng, 0.5em);
     .bottom { transform: rotate(180deg); }
     input[type=radio] { display: none; } // hides radio dots
     input[type=radio]:not(:checked) ~ label { display: inline-block; }
