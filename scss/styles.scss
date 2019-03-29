@@ -1,14 +1,19 @@
 // ========== Reference: 80-character line =====================================
 
+* { box-sizing: border-box; }
 :root { // remember to set fallbacks when custom properties are applied
-  --settingsoffset: 3em;
+  --tstborderwidth: 2px;
+  --settingsoffset: calc(3em + 2 * var(--tstborderwidth));
   --topbottompaddg: 1em;
   --leftrightpaddg: 2ch;
   --defaultpadding: var(--topbottompaddg) var(--leftrightpaddg);
   --defsplitpaddng: calc(var(--topbottompaddg) / 2)
                     calc(var(--leftrightpaddg) / 2);
+  --panelwidthbeac: 40ch;
+  --panelwidthitts: 45ch;
+  --panelwidthpois: 35ch;
+  --panelwidthwall: 30ch;
 }
-* { box-sizing: border-box; }
 body, p { // consider using Autoprefixer, e.g. might need for transform
   -webkit-margin-before: 0;
   -webkit-margin-after: 0;
@@ -19,15 +24,16 @@ body, p { // consider using Autoprefixer, e.g. might need for transform
 p { padding: var(--defaultpadding, 1em); }
 #settings, #publayer, #beacon, #itts, #pois, #wallet { position: fixed; }
 #settings {
-  &.rad1 { top: 0; }
-  &.rad2 { bottom: 0; }
+  &.togSettingsRad1 { top: 0; }
+  &.togSettingsRad2 { bottom: 0; }
   left: 0;
   right: 0;
   width: 100%;
   height: var(--settingsoffset);
-  border: 1px solid green;
+  border: var(--tstborderwidth) solid green;
   * { display: inline-block; }
   ul {
+    width: 100%;
     margin: 0;
     padding: var(--defsplitpaddng, 0.5em);
   }
@@ -37,21 +43,22 @@ p { padding: var(--defaultpadding, 1em); }
     input[type=radio] { display: none; } // hides radio dots
     input[type=radio]:not(:checked) ~ label { display: inline-block; }
     input[type=radio]:checked ~ label { display: none; }
+    &:hover i { color: green; }
   } // if selected, show icon of opposite option
 }
 #publayer {
-  &.rad1 {
+  &.togSettingsRad1 {
     top: var(--settingsoffset);
     bottom: 0;
   }
-  &.rad2 {
+  &.togSettingsRad2 {
     top: 0;
     bottom: var(--settingsoffset); 
   }
   left: 0;
   right: 0;
   width: 100%;
-  border: 1px solid blue;
+  border: var(--tstborderwidth) solid blue;
   * { text-align: center; }
   nav {
     height: var(--settingsoffset);
@@ -59,31 +66,52 @@ p { padding: var(--defaultpadding, 1em); }
   }
 }
 #beacon, #itts, #pois, #wallet {
-  &.rad1 {
-    top: calc(2 * var(--settingsoffset));
-    bottom: 0;
+  &.togSettingsRad1 {
+    top: calc(var(--tstborderwidth) + 2 * var(--settingsoffset));
+         // changes if settings bar or nav are not equal height
+    bottom: var(--tstborderwidth);
   }
-  &.rad2 {
-    top: var(--settingsoffset);
-    bottom: var(--settingsoffset);
+  &.togSettingsRad2 {
+    top: calc(var(--tstborderwidth) + var(--settingsoffset));
+    bottom: calc(var(--tstborderwidth) + var(--settingsoffset));
   }
   display: inline-block;
   background-color: silver;
   // * { display: inline-block; }
-  * { border: inherit; }
-  p { height: 100%; } // might not need this
+  p { height: 100%; } // might not need this, only effect panel, not handle
   .handle {
+    border: inherit;
     position: absolute;
     background-color: inherit;
     width: 100%;
     text-align: center;
+    
+    input[type=radio] { display: none; } // hides radio dots
+    
+    
+    * { display: inline-block; }
+    label, ul {
+      width: 100%;
+      margin: 0;
+    }
+    ul { padding: var(--defsplitpaddng, 0.5em); }
+    li {
+      padding: var(--defsplitpaddng, 0.5em);
+      .close { transform: rotate(180deg); } /*
+      input[type=radio] { display: none; } // hides radio dots
+      input[type=radio]:not(:checked) ~ label { display: inline-block; }
+      input[type=radio]:checked ~ label { display: none; } */
+      &.leftend { float: left; }
+      &.rightend { float: right; }
+    } // if selected, show icon of opposite option
+    i.open { display: none; }
   }
 }
 #beacon, #wallet {
   left: 0;
   .handle {
     //float: right;
-    transform: rotate(-90deg);
+    transform: rotate(-90deg) translateX(var(--tstborderwidth));
     transform-origin: top right;
     right: 0;
   }
@@ -91,25 +119,31 @@ p { padding: var(--defaultpadding, 1em); }
 #itts, #pois {
   right: 0;
   .handle {
-    transform: rotate(90deg);
+    transform: rotate(90deg) translateX(calc(-1*var(--tstborderwidth)));
     transform-origin: top left;
   }
 }
 #beacon, #itts {
-  border: 1px solid purple;
+  border: var(--tstborderwidth) solid purple;
+  label:hover { color: purple; }
 }
 #pois, #wallet {
-  border: 1px solid red;
+  border: var(--tstborderwidth) solid red;
+  label:hover { color: red; }
 }
-#beacon {
-  width: 40ch;
+#beacon .panel {
+  width: var(--panelwidthbeac);
 }
-#itts {
-  width: 45ch;
+#itts .panel {
+  width: var(--panelwidthitts);
 }
-#pois {
-  width: 35ch;
+#pois .panel {
+  width: var(--panelwidthpois);
+  &.togPOIsRad1 { display: inline-block; }
+  &.togPOIsRad2 { display: none; }
 }
-#wallet {
-  width: 30ch;
+#wallet .panel {
+  width: var(--panelwidthwall);
+  &.togWalletRad1 { display: inline-block; }
+  &.togWalletRad2 { display: none; }
 }

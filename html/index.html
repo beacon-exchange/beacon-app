@@ -1,7 +1,7 @@
 <!-- Reference: 80-character line... 80-character line... 80-character line. -->
 
 <!DOCTYPE html> <!-- Requires HTML5 or later. Not XHTML. -->
-<html lang="en">
+<html lang='en'>
 <head>
 
 <!-- ========== ANALYTICS ================================================== -->
@@ -11,22 +11,22 @@
 <!-- ========== METADATA =================================================== -->
 
   <!-- Robots.txt specifies exclusions & sitemap.xml specifies inclusions -->
-  <meta name="robots" content="index, follow"> <!-- Default/Reminder -->
-  <!-- Index = "crawl this" & follow = "pass link equity to all links" -->
-  <base target="_self"> <!-- href="https://thisWebsite.com/" -->
+  <meta name='robots' content='index, follow'> <!-- Default/Reminder -->
+  <!-- Index = 'crawl this' & follow = 'pass link equity to all links' -->
+  <base target='_self'> <!-- href='https://thisWebsite.com/' -->
   <!-- Placeholder for FavIcons when Assets folder is set up to hold them -->
-  <link rel="icon" href="assets/fav/icon.png" type="image/png" sizes="512x512">
+  <link rel='icon' href='assets/fav/icon.png' type='image/png' sizes='512x512'>
   <!--
-  <link rel="icon" href="assets/fav/icon65.png" type="image/png" sizes="65x65">
-  <link rel="icon" href="assets/fav/icon32.png" type="image/png" sizes="32x32">
-  <link rel="icon" href="assets/fav/icon16.png" type="image/png" sizes="16x16">
-  <link rel="icon" href="assets/fav/icon16.ico" type="image/ico" sizes="16x16">
+  <link rel='icon' href='assets/fav/icon65.png' type='image/png' sizes='65x65'>
+  <link rel='icon' href='assets/fav/icon32.png' type='image/png' sizes='32x32'>
+  <link rel='icon' href='assets/fav/icon16.png' type='image/png' sizes='16x16'>
+  <link rel='icon' href='assets/fav/icon16.ico' type='image/ico' sizes='16x16'>
   -->
   <!-- Although currently no major browser supports the sizes attribute, (i.e.
        will be ignored,) it is still considered good hygiene to include them.
     -->
-  <meta name="theme-color" content="#808080″> <!-- Candy for Android Chrome -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name='theme-color' content='#808080'> <!-- Candy for Android Chrome -->
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
   <meta charset='utf-8'>
   <!-- https://developers.google.com/fonts/docs/getting_started
        https://developers.google.com/fonts/docs/technical_considerations
@@ -41,8 +41,8 @@
        Alternatively, woff2 files uploaded to server but not yet integrated
     -->
   <!--
-  <link rel="stylesheet" href=
-    "https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Oswald:600"
+  <link rel='stylesheet' href=
+    'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Oswald:600'
   >
   -->
 
@@ -50,22 +50,22 @@
   
   <!-- SEO Note: Appears on tab next to favicon, & default bookmark name -->
   <title>Beacon App - Decentralized Asset Exchange Protocol | Home</title>
-  <meta name="author" content="Beacon">
+  <meta name='author' content='Beacon'>
   <!-- SEO Note (2018Q1): Keywords should be 10-20 words long. -->
-  <meta name="keywords" content=
-    "Cryptocurrency Exchange,
+  <meta name='keywords' content=
+    'Cryptocurrency Exchange,
     Electronic Trading,
     Decentralized Exchange,
     Peer-to-Peer,
     White Paper,
     Cryptocurrency,
-    Blockchain"
+    Blockchain'
   > <!-- SEO Note (2018Q1): Title should not exceed 50 characters. -->
   <!-- SEO Note (2018Q1): Description should be 150-300 characters long. -->
-  <meta name="description" content=
-    "Beacon is a protocol for peer-to-peer exchange of cryptocurrency assets.
+  <meta name='description' content=
+    'Beacon is a protocol for peer-to-peer exchange of cryptocurrency assets.
     Trading on Beacon is permissionless, fee-free, decentralized, fast and
-    impartial!"
+    impartial!'
   >
 
 <!-- ========== CASCADING STYLE SHEETS ===================================== -->
@@ -76,71 +76,146 @@
         integrity='sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/'
         crossorigin='anonymous'>
   <!-- Need ruby to build scss ... -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel='stylesheet' href='styles.css'>
   
 <!-- ========== OTHER BEFORE-DOCUMENT LOAD SCRIPTS ========================= -->
 
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-          crossorigin="anonymous"></script>
+  <script src='https://code.jquery.com/jquery-3.3.1.min.js'
+          integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8='
+          crossorigin='anonymous'></script>
   <!--
-  <script src="main.js"></script>
+  <script src='main.js'></script>
   -->
   
 </head>
 <body>
-  <div id="FAKEROOT">
-    <div id="settings" class="rad1">
+  <div id='FAKEROOT'>
+    <div id='settings' class='togSettingsRad1'>
       <ul>
         <li>Settings Bar:</li>
         <li>
           <div>
-            <input type="radio" name="slim" id="rad1" checked>
-            <label for="rad1"><i class='fas top'>&#xf2d0</i></label>
+            <input type='radio' name='togSettings' id='togSettingsRad1' checked>
+            <label for='togSettingsRad1'><i class='fas top'>&#xf2d0;</i></label>
           </div><!-- must have no gap between elements here --><div>
-            <input type="radio" name="slim" id="rad2">
-            <label for="rad2"><i class='fas bottom'>&#xf2d0</i></label>
+            <input type='radio' name='togSettings' id='togSettingsRad2'>
+            <label for='togSettingsRad2'><i class='fas bottom'>&#xf2d0;</i></label>
           </div>
         </li>
         <!-- add others later -->
+        <li><i class='fas'>&#xf53f;</i></li>
       </ul>
     </div>
-    <div id="publayer" class="rad1">
+    <div id='publayer' class='togSettingsRad1'>
       <nav><p>Public Layer Menu/Nav</p></nav>
       <div>
         <p>Public Layer Content</p>
       </div>
     </div>
-    <div id="itts" class="rad1">
-      <div class="handle">
-        <p><i class='fas'>&#xf103;</i> ITTs <i class='fas'>&#xf103;</i></p>
+    
+    <div id='itts' class='togSettingsRad1'>
+      <div class='handle'>
+        <ul>
+          <li>
+            <div>
+              <input type='radio' name='togITTs' id='togITTsRad1' checked>
+              <label for='togITTsRad1'><i class='fas open'>&#xf103;</i></label>
+            </div><!-- must have no gap between elements here --><div>
+              <input type='radio' name='togITTs' id='togITTsRad2'>
+              <label for='togITTsRad2'><i class='fas close'>&#xf103;</i></label>
+            </div>
+          </li>
+          <li> ITTs </li>
+        </ul>
       </div>
-      <p>ITTs Content ... More ITTs Content ... More ITTs Content ... </p>
-    </div>
-    <div id="pois" class="rad1">
-      <div class="handle">
-        <p><i class='fas'>&#xf103;</i> POIs <i class='fas'>&#xf103;</i></p>
+      <div class='panel'>
+        <p>ITTs Content ... More ITTs Content ... More ITTs Content ... </p>
       </div>
-      <p>POIs Content ... More POIs Content ... More POIs Content ... </p>
     </div>
-    <div id="beacon" class="rad1">
-      <div class="handle">
+    
+    <div id='pois' class='togSettingsRad1'>
+      <div class='handle'>
+        <ul>
+          <li>
+            <div>
+              <input type='radio' name='togPOIs' id='togPOIsRad1' checked>
+              <label for='togPOIsRad1'><i class='fas open'>&#xf103;</i></label>
+              <!-- nesting the panel here is an option for pure CSS toggling -->
+            </div><!-- must have no gap between elements here --><div>
+              <input type='radio' name='togPOIs' id='togPOIsRad2'>
+              <label for='togPOIsRad2'><i class='fas close'>&#xf103;</i></label>
+            </div>
+          </li>
+          <li> POIs </li>
+        </ul>
+      </div>
+      <div class='panel'>
+        <p>POIs Content ... More POIs Content ... More POIs Content ... </p>
+      </div>
+    </div>
+    <div id='beacon' class='togSettingsRad1'>
+      <div class='handle'>
         <p><i class='fas'>&#xf103;</i> Beacon <i class='fas'>&#xf103;</i></p>
       </div>
-      <p>Beacon Content ... More Beacon Content ... More Beacon Content ... </p>
-    </div>
-    <div id="wallet" class="rad1">
-      <div class="handle">
-        <p><i class='fas'>&#xf103;</i> Wallet <i class='fas'>&#xf103;</i></p>
+      <div class='panel'>
+        <p>Beacon Content ... More Beacon Content ... More Beacon Content ... </p>
       </div>
-      <p>Wallet Content ... More Wallet Content ... More Wallet Content ... </p>
     </div>
+    
+    <div id='wallet' class='togSettingsRad1'>
+      <div class='handle'>
+        <input type='radio' name='togWallet' id='togWalletRad1' checked>
+        <label for='togWalletRad1'>
+          <ul>
+            <li class='leftend'>
+              <div>
+                <i class='fas open'>&#xf103;</i>
+              </div><!-- must have no gap between elements here --><div>
+                <i class='fas close'>&#xf103;</i>
+              </div>
+            </li>
+            <li> Wallet </li>
+            <li class='rightend'>
+              <div>
+                <i class='fas open'>&#xf103;</i>
+              </div><!-- must have no gap between elements here --><div>
+                <i class='fas close'>&#xf103;</i>
+              </div>
+            </li>
+          </ul>
+        </label><!--
+        <input type='radio' name='togWallet' id='togWalletRad2'>
+        <label for='togWalletRad2'>
+          <ul>
+            <li class='leftend'>
+              <div>
+                <i class='fas open'>&#xf103;</i>
+              </div>!-- must have no gap between elements here --<div>
+                <i class='fas close'>&#xf103;</i>
+              </div>
+            </li>
+            <li> Wallet </li>
+            <li class='rightend'>
+              <div>
+                <i class='fas open'>&#xf103;</i>
+              </div>!-- must have no gap between elements here --<div>
+                <i class='fas close'>&#xf103;</i>
+              </div>
+            </li>
+          </ul>
+        </label>-->
+      </div>
+      <div class='panel togWalletRad1'>
+        <p>Wallet Content ... More Wallet Content ... More Wallet Content ... </p>
+      </div>
+    </div>
+    
   </div>
     
 <!-- ========== AFTER-DOCUMENT LOAD SCRIPTS ================================ -->
 
   <!-- Put scripts at the end to speed up page loading for older browsers -->
-  <script src="slim.js"></script>
+  <script src='slim.js'></script>
   <!-- Just in case the user disabled scripts on their browser... -->
   <noscript>Something on this page not working?
      If available, try enabling scripts on your browser.
