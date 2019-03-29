@@ -84,5 +84,5 @@ $(function(){
   handleLength();
   moveSettings();
   panelWidthPOIs();
-  panelWidthWallet();
+  // panelWidthWallet();
 })

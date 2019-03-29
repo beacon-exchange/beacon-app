@@ -39,11 +39,13 @@ p { padding: var(--defaultpadding, 1em); }
   }
   li {
     padding: var(--defsplitpaddng, 0.5em);
-    .bottom { transform: rotate(180deg); }
-    input[type=radio] { display: none; } // hides radio dots
-    input[type=radio]:not(:checked) ~ label { display: inline-block; }
-    input[type=radio]:checked ~ label { display: none; }
     &:hover i { color: green; }
+    .bottom { transform: rotate(180deg); }
+    input[type=radio] {
+      display: none; // hides radio dots
+      &:checked ~ label { display: none; }
+      &:not(:checked) ~ label { display: inline-block; }
+    }
   } // if selected, show icon of opposite option
 }
 #publayer {
@@ -79,6 +81,7 @@ p { padding: var(--defaultpadding, 1em); }
   background-color: silver;
   // * { display: inline-block; }
   p { height: 100%; } // might not need this, only effect panel, not handle
+  input[type=radio] { display: none; } // hides radio dots
   .handle {
     border: inherit;
     position: absolute;
@@ -86,9 +89,7 @@ p { padding: var(--defaultpadding, 1em); }
     width: 100%;
     text-align: center;
     
-    input[type=radio] { display: none; } // hides radio dots
-    
-    
+
     * { display: inline-block; }
     label, ul {
       width: 100%;
