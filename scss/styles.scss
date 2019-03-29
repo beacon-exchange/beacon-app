@@ -67,7 +67,7 @@ p { padding: var(--defaultpadding, 1em); }
     border: inherit;
   }
 }
-#beacon, #itts, #pois, #wallet {
+#beacon, #itts, #pois, #wallet { // drawers
   &.togSettingsRad1 {
     top: calc(var(--tstborderwidth) + 2 * var(--settingsoffset));
          // changes if settings bar or nav are not equal height
@@ -83,14 +83,9 @@ p { padding: var(--defaultpadding, 1em); }
   p { height: 100%; } // might not need this, only effect panel, not handle
   input[type=checkbox] {
     display: none; // hides checkbox
-    // not checked = shut
-    &:not(:checked) + label .up { display: none; }
-    &:not(:checked) + label .dn { display: inline-block; }
-    &:not(:checked) ~ .panel { display: none; }
-    // checked = open
-    &:checked + label .up { display: inline-block; }
-    &:checked + label .dn { display: none; }
-    &:checked ~ .panel { display: inline-block; }
+    &:not(:checked) ~ .panel { display: none; } // not checked = shut
+    &:checked ~ .panel { display: inline-block; } // checked = open
+    &:checked + label i.fas { transform: rotate(180deg); }
   }
   .handle {
     border: inherit;
@@ -105,7 +100,6 @@ p { padding: var(--defaultpadding, 1em); }
     }
     ul, li { padding: var(--defsplitpaddng, 0.5em); }
     li {
-      .up { transform: rotate(180deg); }
       &.leftend { float: left; }
       &.rightend { float: right; }
     } // if selected, show icon of opposite option
@@ -128,6 +122,7 @@ p { padding: var(--defaultpadding, 1em); }
   }
 }
 #beacon, #itts {
+// add code to offset so bottom drawers can be seen when top drawers are open
   border: var(--tstborderwidth) solid purple;
   label:hover { color: purple; }
 }

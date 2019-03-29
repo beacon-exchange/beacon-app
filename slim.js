@@ -25,34 +25,6 @@ function moveSettings() {
   })
 }
 
-function panelWidthPOIs() {
-  // switch applied classes
-  // case 1
-  $('#pois .close').click(function(){
-    $('#pois .panel')
-      .toggleClass('togPOIsRad1 togPOIsRad2');
-  })
-  // case 2
-  $('#pois .open').click(function(){
-    $('#pois .panel')
-      .toggleClass('togPOIsRad1 togPOIsRad2');
-  })
-}
-
-function panelWidthWallet() {
-  // switch applied classes
-  // case 1
-  $('#wallet .close').click(function(){
-    $('#wallet .panel')
-      .toggleClass('togWalletRad1 togWalletRad2');
-  })
-  // case 2
-  $('#wallet .open').click(function(){
-    $('#wallet .panel')
-      .toggleClass('togWalletRad1 togWalletRad2');
-  })
-}
-
 // ========== WINDOW RESIZE EVENT ==============================================
 
 $(window).resize(function() {
@@ -79,10 +51,7 @@ function onWindowResize(){
 
 // ========== DOCUMENT READY ===================================================
 
-$(function(){
-  // $(function) same as $(document).ready(function)
+$(function(){ // $(function) same as $(document).ready(function)
   handleLength();
   moveSettings();
-  panelWidthPOIs();
-  // panelWidthWallet();
 })
