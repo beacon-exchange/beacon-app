@@ -81,31 +81,34 @@ p { padding: var(--defaultpadding, 1em); }
   background-color: silver;
   // * { display: inline-block; }
   p { height: 100%; } // might not need this, only effect panel, not handle
-  input[type=radio] { display: none; } // hides radio dots
+  input[type=checkbox] {
+    display: none; // hides checkbox
+    // not checked = shut
+    &:not(:checked) + label .up { display: none; }
+    &:not(:checked) + label .dn { display: inline-block; }
+    &:not(:checked) ~ .panel { display: none; }
+    // checked = open
+    &:checked + label .up { display: inline-block; }
+    &:checked + label .dn { display: none; }
+    &:checked ~ .panel { display: inline-block; }
+  }
   .handle {
     border: inherit;
     position: absolute;
     background-color: inherit;
     width: 100%;
     text-align: center;
-    
-
     * { display: inline-block; }
-    label, ul {
+    ul {
       width: 100%;
       margin: 0;
     }
-    ul { padding: var(--defsplitpaddng, 0.5em); }
+    ul, li { padding: var(--defsplitpaddng, 0.5em); }
     li {
-      padding: var(--defsplitpaddng, 0.5em);
-      .close { transform: rotate(180deg); } /*
-      input[type=radio] { display: none; } // hides radio dots
-      input[type=radio]:not(:checked) ~ label { display: inline-block; }
-      input[type=radio]:checked ~ label { display: none; } */
+      .up { transform: rotate(180deg); }
       &.leftend { float: left; }
       &.rightend { float: right; }
     } // if selected, show icon of opposite option
-    i.open { display: none; }
   }
 }
 #beacon, #wallet {
