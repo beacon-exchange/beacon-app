@@ -22,7 +22,9 @@ body, p { // consider using Autoprefixer, e.g. might need for transform
   margin: 0;
 }
 p { padding: var(--defaultpadding, 1em); }
-#settings, #publayer, #beacon, #itts, #pois, #wallet { position: fixed; }
+#settings, #publayer,
+#beacon, #itts, #pois, #wallet,
+#ghostright, #ghostleft { position: fixed; }
 #settings {
   &.togSettingsRad1 { top: 0; }
   &.togSettingsRad2 { bottom: 0; }
@@ -67,7 +69,7 @@ p { padding: var(--defaultpadding, 1em); }
     border: inherit;
   }
 }
-#beacon, #itts, #pois, #wallet { // drawers
+#beacon, #itts, #pois, #wallet, #ghostright, #ghostleft { // drawers
   &.togSettingsRad1 {
     top: calc(var(--tstborderwidth) + 2 * var(--settingsoffset));
          // changes if settings bar or nav are not equal height
@@ -103,21 +105,24 @@ p { padding: var(--defaultpadding, 1em); }
     } // if selected, show icon of opposite option
   }
 }
-#beacon, #wallet {
+#beacon, #wallet, #ghostleft {
   left: 0;
   .handle {
     transform: rotate(-90deg) translateX(var(--tstborderwidth));
     transform-origin: top right;
     right: 0;
+    // float: left; // only matters if position isn't fixed
   }
 }
-#itts, #pois {
+#itts, #pois, #ghostright {
   right: 0;
   .handle {
     transform: rotate(90deg) translateX(calc(-1*var(--tstborderwidth)));
     transform-origin: top left;
   }
+  // float: right; // only matters if position isn't fixed
 }
+#ghostright, #ghostleft { border: var(--tstborderwidth) solid black; }
 #beacon, #itts {
   border: var(--tstborderwidth) solid purple;
   label:hover { color: purple; }
