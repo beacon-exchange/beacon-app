@@ -15,12 +15,14 @@ function moveSettings() {
   // switch applied classes
   // case 1
   $('#settings .bottom').click(function(){
-    $('#settings, #publayer, #beacon, #itts, #pois, #wallet, #ghostright, #ghostleft')
+    //$('#settings, #publayer, #beacon, #itts, #pois, #wallet, #ghostright, #ghostleft')
+    $('#settings, #publayer, #dresserLft, #dresserRgt')
       .toggleClass('togSettingsRad1 togSettingsRad2');
   })
   // case 2
   $('#settings .top').click(function(){
-    $('#settings, #publayer, #beacon, #itts, #pois, #wallet, #ghostright, #ghostleft')
+    //$('#settings, #publayer, #beacon, #itts, #pois, #wallet, #ghostright, #ghostleft')
+    $('#settings, #publayer, #dresserLft, #dresserRgt')
       .toggleClass('togSettingsRad1 togSettingsRad2');
   })
 }
