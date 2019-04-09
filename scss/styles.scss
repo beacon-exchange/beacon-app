@@ -24,6 +24,8 @@ body, p, ul { // consider using Autoprefixer, e.g. might need for transform
   margin: 0;
 }
 p { padding: var(--defaultpadding, 1em); }
+// ul { overflow-x: auto; overflow-y: hidden; text-overflow: ellipsis; } // ?
+[title], label { cursor: pointer; }
 #settings, #publayer, #dresserLft, #dresserRgt { position: fixed; }
 #settings {
   &.togSettingsRad1 { top: 0; }
@@ -116,6 +118,7 @@ p { padding: var(--defaultpadding, 1em); }
 .drawerTop, .drawerBot {
   position: relative; // on parent of .handle w/position: absolute;
   display: inline-block;
+  height: 100%;
   background-color: silver;
   input[type=checkbox] {
     display: none; // hides checkboxes
