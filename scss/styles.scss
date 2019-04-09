@@ -1,7 +1,7 @@
 // ========== Reference: 80-character line =====================================
 
 * { box-sizing: border-box; }
-:root { // remember to set fallbacks when custom properties are applied
+:root { // remember to set fallbacks when custom properties are applied (for IE)
   --tstborderwidth: 2px;
   --settingsoffset: calc(3em + 2 * var(--tstborderwidth));
   --topbottompaddg: 1em;
@@ -9,12 +9,14 @@
   --defaultpadding: var(--topbottompaddg) var(--leftrightpaddg);
   --defsplitpaddng: calc(var(--topbottompaddg) / 2)
                     calc(var(--leftrightpaddg) / 2);
+  --dwhandleheight: calc(1em + 2 * var(--topbottompaddg)
+                             + 2 * var(--tstborderwidth));
   --panelwidthbeac: 40ch;
   --panelwidthitts: 45ch;
   --panelwidthpois: 35ch;
   --panelwidthwall: 30ch;
 }
-body, p { // consider using Autoprefixer, e.g. might need for transform
+body, p, ul { // consider using Autoprefixer, e.g. might need for transform
   -webkit-margin-before: 0;
   -webkit-margin-after: 0;
   -webkit-margin-start: 0;
@@ -26,21 +28,15 @@ p { padding: var(--defaultpadding, 1em); }
 #settings {
   &.togSettingsRad1 { top: 0; }
   &.togSettingsRad2 { bottom: 0; }
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: var(--settingsoffset);
-  border: var(--tstborderwidth) solid green;
-  * { display: inline-block; }
-  ul {
-    width: 100%;
-    margin: 0;
-    padding: var(--defsplitpaddng, 0.5em);
-  }
+  width: 100%; // alternately, set { left: 0; right: 0; }
+  height: var(--settingsoffset, 3em);
+  border: var(--tstborderwidth, 1px) solid green;
+  ul { width: 100%; }
+  ul, li { padding: var(--defsplitpaddng, 0.5em); }
   li {
-    padding: var(--defsplitpaddng, 0.5em);
+    display: inline-block;
     &:hover i { color: green; }
-    .bottom { transform: rotate(180deg); }
+    .barBot { transform: rotate(180deg); }
     input[type=radio] {
       display: none; // hides radio dots
       &:checked ~ label { display: none; }
@@ -50,41 +46,79 @@ p { padding: var(--defaultpadding, 1em); }
 }
 #publayer {
   &.togSettingsRad1 {
-    top: var(--settingsoffset);
+    top: var(--settingsoffset, 3em);
     bottom: 0;
   }
   &.togSettingsRad2 {
     top: 0;
-    bottom: var(--settingsoffset); 
+    bottom: var(--settingsoffset, 3em); 
   }
-  left: 0;
-  right: 0;
-  width: 100%;
-  border: var(--tstborderwidth) solid blue;
+  width: 100%; // alternately, set { left: 0; right: 0; }
+  border: var(--tstborderwidth, 1px) solid blue;
   * { text-align: center; }
   nav {
-    height: var(--settingsoffset);
+    height: var(--settingsoffset, 3em);
     border: inherit;
   }
 }
 #dresserLft, #dresserRgt {
-  // height: 100%; 
   &.togSettingsRad1 {
     top: calc(var(--tstborderwidth) + 2 * var(--settingsoffset));
-         // changes if settings bar or nav are not equal height
+      // adjust formula if settings bar & pub layer nav are not equal height
     bottom: var(--tstborderwidth);
   }
   &.togSettingsRad2 {
     top: calc(var(--tstborderwidth) + var(--settingsoffset));
     bottom: calc(var(--tstborderwidth) + var(--settingsoffset));
   }
+  .drawerTop {
+    border: var(--tstborderwidth) solid red;
+    label:hover { color: red; }
+  }
+  .drawerBot {
+    border: var(--tstborderwidth) solid purple;
+    label:hover { color: purple; }
+  }
 }
-#beacon, #itts, #pois, #wallet { // drawers
+#dresserLft {
+  .handle {
+    transform: rotate(-90deg) translateX(var(--tstborderwidth, 1px));
+    transform-origin: top right; // order matters with transforms
+    right: var(--dwhandleheight, 3em);
+    // wishlist: for li { direction: rtl; } to work on elements (not just text)
+  }
+  .drawerTop, .drawerBot {
+    float: left;
+    &::after { // ghost
+      content: '\00a0';
+      display: inline-block;
+      float: right;
+      width: var(--dwhandleheight, 3em);
+    }
+  }
+}
+#dresserRgt {
+  right: 0;
+  .handle {
+    transform: rotate(90deg) translateX(calc(-1*var(--tstborderwidth)));
+    transform-origin: top left; // order matters with transforms
+  }
+  .drawerTop, .drawerBot {
+    float: right;
+    &::before { // ghost
+      content: '\00a0';
+      display: inline-block;
+      float: left;
+      width: var(--dwhandleheight, 3em);
+    }
+  }
+}
+.drawerTop, .drawerBot {
   position: relative; // on parent of .handle w/position: absolute;
+  display: inline-block;
   background-color: silver;
-  p { height: 100%; } // might not need this, only effect panel, not handle
   input[type=checkbox] {
-    display: none; // hides checkbox
+    display: none; // hides checkboxes
     &:not(:checked) ~ .panel { display: none; } // not checked = shut
     &:checked ~ .panel { display: inline-block; } // checked = open
     &:checked + label i.fas { transform: rotate(180deg); }
@@ -93,63 +127,17 @@ p { padding: var(--defaultpadding, 1em); }
     border: inherit;
     position: absolute;
     background-color: inherit;
+    max-height: var(--dwhandleheight, 3em);
+    overflow: hidden; // wishlist: #dresserLft .handle li { direction: rtl; }
     text-align: center;
-    ul {
-      width: 100%; // decided against inherit
-      margin: 0;
-    }
+    ul { width: 100%; } // decided against inherit
     ul, li { padding: var(--defsplitpaddng, 0.5em); }
-    li { display: inline-block; } // revisit
+    li { display: inline-block; } // flexbox ignores { float: right; } elements
     li.endLft { float: left; }
     li.endRgt { float: right; }
   }
-  display: inline-block;
-}
-#dresserLft {
-// #beacon, #wallet {
-  // left: 0; // default
-  .handle {
-    transform: rotate(-90deg) translateX(var(--tstborderwidth));
-    transform-origin: top right;
-    right: calc(1em + 2 * (var(--topbottompaddg) + var(--tstborderwidth)));
-  }
-  #beacon, #wallet { float: left; }
-  // #wallet { clear: left; }
-}
-#dresserRgt {
-// #itts, #pois {
-  right: 0;
-  .handle {
-    transform: rotate(90deg) translateX(calc(-1*var(--tstborderwidth)));
-    transform-origin: top left;
-  }
-  #itts, #pois { float: right; }
-}
-.drawerBot {
-// #beacon, #itts {
-  border: var(--tstborderwidth) solid purple;
-  label:hover { color: purple; }
-}
-.drawerTop {
-// #pois, #wallet {
-  border: var(--tstborderwidth) solid red;
-  label:hover { color: red; }
 }
 #beacon .panel { width: var(--panelwidthbeac); }
 #itts .panel { width: var(--panelwidthitts); }
 #pois .panel { width: var(--panelwidthpois); }
 #wallet .panel { width: var(--panelwidthwall); }
-#pois::before, #itts::before {
-  content: '\00a0';
-  display: inline-block;
-  float: left;
-  width: calc(1em + 2 * (var(--topbottompaddg) + var(--tstborderwidth)));
-  // height: 100%;
-}
-#beacon::after, #wallet::after {
-  content: '\00a0';
-  display: inline-block;
-  float: right;
-  width: calc(1em + 2 * (var(--topbottompaddg) + var(--tstborderwidth)));
-  // bottom: 0;
-}
