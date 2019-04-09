@@ -110,11 +110,11 @@ p { padding: var(--defaultpadding, 1em); }
 }
 #dresserLft {
 // #beacon, #wallet, #ghostleft {
-  left: 0;
+  // left: 0; // default
   .handle {
     transform: rotate(-90deg) translateX(var(--tstborderwidth));
     transform-origin: top right;
-    right: 0;
+    right: calc(1em + 2 * (var(--topbottompaddg) + var(--tstborderwidth)));
   }
   #beacon, #wallet, #ghostleft { float: left; }
   // #wallet { clear: left; }
@@ -155,5 +155,5 @@ p { padding: var(--defaultpadding, 1em); }
   display: inline-block;
   float: right;
   width: calc(1em + 2 * (var(--topbottompaddg) + var(--tstborderwidth)));
-  // height: 100%;
+  // bottom: 0;
 }
