@@ -22,10 +22,7 @@ body, p { // consider using Autoprefixer, e.g. might need for transform
   margin: 0;
 }
 p { padding: var(--defaultpadding, 1em); }
-#settings, #publayer,
-// #beacon, #itts, #pois, #wallet,
-// #ghostright, #ghostleft
-#dresserLft, #dresserRgt { position: fixed; }
+#settings, #publayer, #dresserLft, #dresserRgt { position: fixed; }
 #settings {
   &.togSettingsRad1 { top: 0; }
   &.togSettingsRad2 { bottom: 0; }
@@ -82,7 +79,7 @@ p { padding: var(--defaultpadding, 1em); }
     bottom: calc(var(--tstborderwidth) + var(--settingsoffset));
   }
 }
-#beacon, #itts, #pois, #wallet, #ghostright, #ghostleft { // drawers
+#beacon, #itts, #pois, #wallet { // drawers
   position: relative; // on parent of .handle w/position: absolute;
   background-color: silver;
   p { height: 100%; } // might not need this, only effect panel, not handle
@@ -103,32 +100,31 @@ p { padding: var(--defaultpadding, 1em); }
     }
     ul, li { padding: var(--defsplitpaddng, 0.5em); }
     li { display: inline-block; } // revisit
-    li.leftend { float: left; }
-    li.rightend { float: right; }
+    li.endLft { float: left; }
+    li.endRgt { float: right; }
   }
   display: inline-block;
 }
 #dresserLft {
-// #beacon, #wallet, #ghostleft {
+// #beacon, #wallet {
   // left: 0; // default
   .handle {
     transform: rotate(-90deg) translateX(var(--tstborderwidth));
     transform-origin: top right;
     right: calc(1em + 2 * (var(--topbottompaddg) + var(--tstborderwidth)));
   }
-  #beacon, #wallet, #ghostleft { float: left; }
+  #beacon, #wallet { float: left; }
   // #wallet { clear: left; }
 }
 #dresserRgt {
-// #itts, #pois, #ghostright {
+// #itts, #pois {
   right: 0;
   .handle {
     transform: rotate(90deg) translateX(calc(-1*var(--tstborderwidth)));
     transform-origin: top left;
   }
-  #itts, #pois, #ghostright { float: right; }
+  #itts, #pois { float: right; }
 }
-#ghostright, #ghostleft { border: var(--tstborderwidth) solid black; }
 .drawerBot {
 // #beacon, #itts {
   border: var(--tstborderwidth) solid purple;
