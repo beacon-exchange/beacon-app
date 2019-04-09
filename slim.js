@@ -3,25 +3,18 @@
 function handleLength() {
   // establish how long the handles to the drawers should be
   $('.handle').outerWidth(
-    // measure height of public layer and height of its nav
+    // measure height of Public Layer and height of its nav
     $('#publayer').innerHeight() - $('#publayer nav').outerHeight()
-  ); // apply measurement to width of .handle
-  // $('.handle label').outerWidth($('.handle').outerWidth());
-  // console.log($('.handle label').innerHeight());
-  // console.log($('.handle').innerHeight());
-  // $('.handle label').innerHeight($('.handle').innerHeight());
+  ); // apply measurement to width of handles
 }
-function moveSettings() {
-  // switch applied classes
-  // case 1
+function moveSettings() { // switch applied classes
+  // case 1: move settings bar to the bottom (below Public Layer)
   $('#settings .barBot').click(function(){
-    //$('#settings, #publayer, #beacon, #itts, #pois, #wallet')
     $('#settings, #publayer, #dresserLft, #dresserRgt')
       .toggleClass('togSettingsRad1 togSettingsRad2');
   })
-  // case 2
+  // case 2: move settings bar back to the top (above Public Layer) 
   $('#settings .barTop').click(function(){
-    //$('#settings, #publayer, #beacon, #itts, #pois, #wallet')
     $('#settings, #publayer, #dresserLft, #dresserRgt')
       .toggleClass('togSettingsRad1 togSettingsRad2');
   })
@@ -31,9 +24,10 @@ function moveSettings() {
 
 $(window).resize(function() {
   // for resizes that are not resource-intensive
-  handleLength();
+  handleLength(); // stretch drawer handle width to Public Layer height
 })
 
+/*
 // for resizes that are somewhat resource-intensive
 var resizeTimer;
 $(window).resize(function() {
@@ -50,10 +44,11 @@ $(window).resize(function() {
 function onWindowResize(){
   // save for later
 }
+*/
 
 // ========== DOCUMENT READY ===================================================
 
 $(function(){ // $(function) same as $(document).ready(function)
-  handleLength();
-  moveSettings();
+  handleLength(); // stretch drawer handle width to Public Layer height
+  moveSettings(); // move settings bar below or above Public Layer
 })
