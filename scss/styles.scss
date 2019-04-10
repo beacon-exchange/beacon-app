@@ -2,19 +2,18 @@
 
 * { box-sizing: border-box; }
 :root { // remember to set fallbacks when custom properties are applied (for IE)
-  --tstborderwidth: 2px;
-  --settingsoffset: calc(3em + 2 * var(--tstborderwidth));
-  --topbottompaddg: 1em;
-  --leftrightpaddg: 2ch;
-  --defaultpadding: var(--topbottompaddg) var(--leftrightpaddg);
-  --defsplitpaddng: calc(var(--topbottompaddg) / 2)
-                    calc(var(--leftrightpaddg) / 2);
-  --dwhandleheight: calc(1em + 2 * var(--topbottompaddg)
-                             + 2 * var(--tstborderwidth));
-  --panelwidthbeac: 40ch;
-  --panelwidthitts: 45ch;
-  --panelwidthpois: 35ch;
-  --panelwidthwall: 30ch;
+  --wPanelWallet: 30ch;
+  --wPanelBeacon: 40ch;
+  --wPanelITTs:   45ch;
+  --wPanelPOIs:   35ch;
+  --borderThickness: 2px;
+  --padTopBot:       1em;
+  --padLftRgt:       2ch;
+  --padDefaultFull:  var(--padTopBot) var(--padLftRgt);
+  --padDefaultSplit: calc(var(--padTopBot) / 2) calc(var(--padLftRgt) / 2);
+  --settingsOffset:  calc(1em + 2*var(--padTopBot) + 2*var(--borderThickness));
+  --hDrawerHandle:   calc(1em + 2*var(--padTopBot) + 2*var(--borderThickness));
+  --hDrawerHandleOffset: calc(1em + 2*var(--padTopBot));
 }
 body, p, ul { // consider using Autoprefixer, e.g. might need for transform
   -webkit-margin-before: 0;
@@ -23,7 +22,7 @@ body, p, ul { // consider using Autoprefixer, e.g. might need for transform
   -webkit-margin-end: 0;
   margin: 0;
 }
-p { padding: var(--defaultpadding, 1em); }
+p { padding: var(--padDefaultFull, 1em); }
 // ul { overflow-x: auto; overflow-y: hidden; text-overflow: ellipsis; } // ?
 [title], label { cursor: pointer; }
 #settings, #publayer, #dresserLft, #dresserRgt { position: fixed; }
@@ -31,10 +30,10 @@ p { padding: var(--defaultpadding, 1em); }
   &.togSettingsRad1 { top: 0; }
   &.togSettingsRad2 { bottom: 0; }
   width: 100%; // alternately, set { left: 0; right: 0; }
-  height: var(--settingsoffset, 3em);
-  border: var(--tstborderwidth, 1px) solid green;
+  height: var(--settingsOffset, 3em);
+  border: var(--borderThickness, 1px) solid green;
   ul { width: 100%; }
-  ul, li { padding: var(--defsplitpaddng, 0.5em); }
+  ul, li { padding: var(--padDefaultSplit, 0.5em); }
   li {
     display: inline-block;
     &:hover i { color: green; }
@@ -48,45 +47,45 @@ p { padding: var(--defaultpadding, 1em); }
 }
 #publayer {
   &.togSettingsRad1 {
-    top: var(--settingsoffset, 3em);
+    top: var(--settingsOffset, 3em);
     bottom: 0;
   }
   &.togSettingsRad2 {
     top: 0;
-    bottom: var(--settingsoffset, 3em); 
+    bottom: var(--settingsOffset, 3em); 
   }
   width: 100%; // alternately, set { left: 0; right: 0; }
-  border: var(--tstborderwidth, 1px) solid blue;
+  border: var(--borderThickness, 1px) solid blue;
   * { text-align: center; }
   nav {
-    height: var(--settingsoffset, 3em);
+    height: var(--settingsOffset, 3em);
     border: inherit;
   }
 }
 #dresserLft, #dresserRgt {
   &.togSettingsRad1 {
-    top: calc(var(--tstborderwidth) + 2 * var(--settingsoffset));
+    top: calc(var(--borderThickness) + 2 * var(--settingsOffset));
       // adjust formula if settings bar & pub layer nav are not equal height
-    bottom: var(--tstborderwidth);
+    bottom: var(--borderThickness);
   }
   &.togSettingsRad2 {
-    top: calc(var(--tstborderwidth) + var(--settingsoffset));
-    bottom: calc(var(--tstborderwidth) + var(--settingsoffset));
+    top: calc(var(--borderThickness) + var(--settingsOffset));
+    bottom: calc(var(--borderThickness) + var(--settingsOffset));
   }
   .drawerTop {
-    border: var(--tstborderwidth) solid red;
+    border: var(--borderThickness) solid red;
     label:hover { color: red; }
   }
   .drawerBot {
-    border: var(--tstborderwidth) solid purple;
+    border: var(--borderThickness) solid purple;
     label:hover { color: purple; }
   }
 }
 #dresserLft {
   .handle {
-    transform: rotate(-90deg) translateX(var(--tstborderwidth, 1px));
+    transform: rotate(-90deg) translateX(var(--borderThickness, 1px));
     transform-origin: top right; // order matters with transforms
-    right: var(--dwhandleheight, 3em);
+    right: var(--hDrawerHandleOffset, 3em);
     // wishlist: for li { direction: rtl; } to work on elements (not just text)
   }
   .drawerTop, .drawerBot {
@@ -95,14 +94,14 @@ p { padding: var(--defaultpadding, 1em); }
       content: '\00a0';
       display: inline-block;
       float: right;
-      width: var(--dwhandleheight, 3em);
+      width: var(--hDrawerHandleOffset, 3em);
     }
   }
 }
 #dresserRgt {
   right: 0;
   .handle {
-    transform: rotate(90deg) translateX(calc(-1*var(--tstborderwidth)));
+    transform: rotate(90deg) translateX(calc(-1*var(--borderThickness)));
     transform-origin: top left; // order matters with transforms
   }
   .drawerTop, .drawerBot {
@@ -111,7 +110,7 @@ p { padding: var(--defaultpadding, 1em); }
       content: '\00a0';
       display: inline-block;
       float: left;
-      width: var(--dwhandleheight, 3em);
+      width: var(--hDrawerHandleOffset, 3em);
     }
   }
 }
@@ -127,20 +126,21 @@ p { padding: var(--defaultpadding, 1em); }
     &:checked + label i.fas { transform: rotate(180deg); }
   }
   .handle {
+    z-index: 1;
     border: inherit;
     position: absolute;
     background-color: inherit;
-    max-height: var(--dwhandleheight, 3em);
+    max-height: var(--hDrawerHandle, 3em);
     overflow: hidden; // wishlist: #dresserLft .handle li { direction: rtl; }
     text-align: center;
     ul { width: 100%; } // decided against inherit
-    ul, li { padding: var(--defsplitpaddng, 0.5em); }
+    ul, li { padding: var(--padDefaultSplit, 0.5em); }
     li { display: inline-block; } // flexbox ignores { float: right; } elements
     li.endLft { float: left; }
     li.endRgt { float: right; }
   }
 }
-#beacon .panel { width: var(--panelwidthbeac); }
-#itts .panel { width: var(--panelwidthitts); }
-#pois .panel { width: var(--panelwidthpois); }
-#wallet .panel { width: var(--panelwidthwall); }
+#wallet .panel { width: var(--wPanelWallet); }
+#beacon .panel { width: var(--wPanelBeacon); }
+#itts   .panel { width: var(--wPanelITTs); }
+#pois   .panel { width: var(--wPanelPOIs); }
