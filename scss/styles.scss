@@ -1,5 +1,34 @@
+// ========== SCSS PREPROCESSOR MINI-LIBRARY/TOOLKIT ===========================
+// Would using outside solutions be heavier than necessary?
+// (e.g. autoprefixer, modernizr, -prefix-free, Prefixr, or a jQuery plugin)
+// Reference: https://css-tricks.com/ordering-css3-properties/
+// (S for single-line)
+/// Mixin to prefix a property
+/// @author Hugo Giraudel
+/// @param {String} $property - Property name
+/// @param {*} $value - Property value
+/// @param {List} $prefixes (()) - List of prefixes to print
+@mixin prefixS($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{'-' + $prefix + '-' + $property}: $value;
+  }
+  #{$property}: $value; // Output standard non-prefixed declaration
+}
+// (M for multi-line)
+/// Mixin to prefix several properties at once
+/// @author Hugo Giraudel
+/// @param {Map} $declarations - Declarations to prefix
+/// @param {List} $prefixes (()) - List of prefixes to print
+@mixin prefixM($declarations, $prefixes: ()) {
+  @each $property, $value in $declarations {
+    @each $prefix in $prefixes {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
+    #{$property}: $value; // Output standard non-prefixed declaration
+  }
+}
+// Reference: https://css-tricks.com/snippets/sass/mixin-prefix-properties/
 // ========== Reference: 80-character line =====================================
-
 * { box-sizing: border-box; }
 :root { // remember to set fallbacks when custom properties are applied (for IE)
   --wPanelWallet: 30ch;
@@ -14,7 +43,7 @@
   --settingsOffset:  calc(1em + 2*var(--padTopBot) + 2*var(--borderThickness));
   --hDrawerHandle:   calc(1em + 2*var(--padTopBot) + 2*var(--borderThickness));
   --hDrawerHandleOffset: calc(1em + 2*var(--padTopBot));
-}
+} // also remember set a fallback before calcs (tedious to test)
 body, p, ul { // consider using Autoprefixer, e.g. might need for transform
   -webkit-margin-before: 0;
   -webkit-margin-after: 0;
@@ -64,12 +93,15 @@ p { padding: var(--padDefaultFull, 1em); }
 }
 #dresserLft, #dresserRgt {
   &.togSettingsRad1 {
+    top: 6em; // fallback
     top: calc(var(--borderThickness) + 2 * var(--settingsOffset));
       // adjust formula if settings bar & pub layer nav are not equal height
-    bottom: var(--borderThickness);
+    bottom: var(--borderThickness, 1px);
   }
   &.togSettingsRad2 {
+    top: 3em; // fallback
     top: calc(var(--borderThickness) + var(--settingsOffset));
+    bottom: 3em; // fallback
     bottom: calc(var(--borderThickness) + var(--settingsOffset));
   }
   .drawerTop {
@@ -82,9 +114,10 @@ p { padding: var(--padDefaultFull, 1em); }
   }
 }
 #dresserLft {
-  .handle {
-    transform: rotate(-90deg) translateX(var(--borderThickness, 1px));
-    transform-origin: top right; // order matters with transforms
+  .handle { @include prefixM((
+      transform: rotate(-90deg) translateX(var(--borderThickness, 1px)),
+      transform-origin: top right, // order matters with transforms
+    ), webkit moz ms o);
     right: var(--hDrawerHandleOffset, 3em);
     // wishlist: for li { direction: rtl; } to work on elements (not just text)
   }
@@ -100,9 +133,11 @@ p { padding: var(--padDefaultFull, 1em); }
 }
 #dresserRgt {
   right: 0;
-  .handle {
-    transform: rotate(90deg) translateX(calc(-1*var(--borderThickness)));
-    transform-origin: top left; // order matters with transforms
+  .handle { @include prefixM((
+      transform: rotate(90deg) translateX(-1px))), // fallback
+      transform: rotate(90deg) translateX(calc(-1*var(--borderThickness))),
+      transform-origin: top left, // order matters with transforms
+    ), webkit moz ms o);
   }
   .drawerTop, .drawerBot {
     float: right;
@@ -123,7 +158,9 @@ p { padding: var(--padDefaultFull, 1em); }
     display: none; // hides checkboxes
     &:not(:checked) ~ .panel { display: none; } // not checked = shut
     &:checked ~ .panel { display: inline-block; } // checked = open
-    &:checked + label i.fas { transform: rotate(180deg); }
+    &:checked + label i.fas {
+      @include prefixS(transform, rotate(180deg), webkit moz ms o);
+    }
   }
   .handle {
     z-index: 1;
