@@ -43,6 +43,10 @@
   --settingsOffset:  calc(1em + 2*var(--padTopBot) + 2*var(--borderThickness));
   --hDrawerHandle:   calc(1em + 2*var(--padTopBot) + 2*var(--borderThickness));
   --hDrawerHandleOffset: calc(1em + 2*var(--padTopBot));
+  --colorSettings:   green;
+  --colorPubLayer:   blue;
+  --colorDrawerTop:  red;
+  --colorDrawerBot:  purple;
 } // also remember set a fallback before calcs (tedious to test)
 body, p, ul { // consider using Autoprefixer, e.g. might need for transform
   -webkit-margin-before: 0;
@@ -60,13 +64,13 @@ p { padding: var(--padDefaultFull, 1em); }
   &.togSettingsRad2 { bottom: 0; }
   width: 100%; // alternately, set { left: 0; right: 0; }
   height: var(--settingsOffset, 3em);
-  border: var(--borderThickness, 1px) solid green;
+  border: var(--borderThickness, 1px) solid var(--colorSettings);
   ul { width: 100%; }
   ul, li { padding: var(--padDefaultSplit, 0.5em); }
   li {
     display: inline-block;
-    &:hover i { color: green; }
-    .barBot { transform: rotate(180deg); }
+    &:hover i { color: var(--colorSettings); }
+    .barBot { @include prefixS(transform, rotate(180deg), webkit moz ms o); }
     input[type=radio] {
       display: none; // hides radio dots
       &:checked ~ label { display: none; }
@@ -84,7 +88,7 @@ p { padding: var(--padDefaultFull, 1em); }
     bottom: var(--settingsOffset, 3em); 
   }
   width: 100%; // alternately, set { left: 0; right: 0; }
-  border: var(--borderThickness, 1px) solid blue;
+  border: var(--borderThickness, 1px) solid var(--colorPubLayer);
   * { text-align: center; }
   nav {
     height: var(--settingsOffset, 3em);
@@ -105,12 +109,12 @@ p { padding: var(--padDefaultFull, 1em); }
     bottom: calc(var(--borderThickness) + var(--settingsOffset));
   }
   .drawerTop {
-    border: var(--borderThickness) solid red;
-    label:hover { color: red; }
+    border: var(--borderThickness) solid var(--colorDrawerTop);
+    label:hover { color: var(--colorDrawerTop); }
   }
   .drawerBot {
-    border: var(--borderThickness) solid purple;
-    label:hover { color: purple; }
+    border: var(--borderThickness) solid var(--colorDrawerBot);
+    label:hover { color: var(--colorDrawerBot); }
   }
 }
 #dresserLft {
@@ -133,8 +137,10 @@ p { padding: var(--padDefaultFull, 1em); }
 }
 #dresserRgt {
   right: 0;
-  .handle { @include prefixM((
-      transform: rotate(90deg) translateX(-1px))), // fallback
+  .handle { // complains if fallback isn't listed separately
+    @include prefixS(
+      transform, rotate(90deg) translateX(-1px), webkit moz ms o); // fallback
+    @include prefixM((
       transform: rotate(90deg) translateX(calc(-1*var(--borderThickness))),
       transform-origin: top left, // order matters with transforms
     ), webkit moz ms o);
@@ -181,3 +187,46 @@ p { padding: var(--padDefaultFull, 1em); }
 #beacon .panel { width: var(--wPanelBeacon); }
 #itts   .panel { width: var(--wPanelITTs); }
 #pois   .panel { width: var(--wPanelPOIs); }
+.panel {
+  border: inherit; // must pass through for .btn to inherit (?)
+  height: inherit; // same as 100%
+  input[type=checkbox] {
+    display: none; // hides checkboxes
+    &:not(:checked) ~ form { display: none; } // not checked = shut
+    &:checked ~ form { display: block; } // checked = open
+  }
+  .btn, form {
+    display: block;
+    margin:  var(--padDefaultFull, 1em);
+    border:  inherit;
+    border-radius: var(--padDefaultSplit, 0.5em);
+  }
+  .btn {
+    padding: var(--padDefaultSplit, 0.5em);
+    background-color: white;
+    text-align: center;
+  }
+  form { padding: var(--padDefaultSplit, 0.5em); }
+  table { border-spacing: var(--padDefaultSplit, 0.5em); }
+  label { white-space: nowrap; }
+  input[type=text] { width: 100%; }
+  input[type=submit] {
+    margin: 0.5em auto; // fallback
+    margin: calc(var(--padTopBot)/2) auto; // center horiz
+  } 
+}
+// Accordion (vertical) ... potential for a mixin (?)
+.acc::before { float: left; }
+.acc::after { float: right; }
+.acc::before, .acc::after { content: '\27A4'; }
+:not(:checked) ~ .acc::before, :not(:checked) ~ .acc::after {
+  @include prefixS(transform, rotate(90deg), webkit moz ms o);
+}
+:checked ~ .acc::before, :checked ~ .acc::after {
+  @include prefixS(transform, rotate(-90deg), webkit moz ms o);
+}
+// input[type=checkbox] {
+//   display: none; // hides checkboxes
+//   &:not(:checked) ~ _____ { display: none; } // not checked = shut
+//   &:checked ~ _____ { display: block; } // checked = open
+// }
