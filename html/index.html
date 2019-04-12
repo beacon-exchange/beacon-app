@@ -164,10 +164,10 @@
         </label>
         <div class='panel'>
           <!-- Reference: https://github.com/ethereum/wiki/wiki/JSON-RPC -->
-          <p>Wallet Content ... More
-             Wallet Content ... More
-             Wallet Content ...
-          </p>
+          <ul>
+            <li>Deposit Amount into Beacon Smart Contract</li>
+            <li>Complete Withdrawal from Beacon Smart Contract</li>
+          </ul>
         </div>
       </div>
       <!-- BOTTOM DRAWER -->
@@ -181,10 +181,13 @@
           </ul>
         </label>
         <div class='panel'>
-          <p>Beacon Content ... More
-             Beacon Content ... More
-             Beacon Content ...
-          </p>
+          <ul>
+            <li>Total Amount in Beacon Smart Contract</li>
+            <li>Amount Locked in Trades in Beacon Smart Contract</li>
+            <li>Amount Available for Trades in Beacon Smart Contract</li>
+            <li>Amount Locked in Withdrawal Period</li>
+            <li>Initiate Withdrawal to Wallet from Amount Available</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -200,10 +203,16 @@
           </ul>
         </label>
         <div class='panel'>
-          <p>POIs Content ... More
-             POIs Content ... More
-             POIs Content ...
-          </p>
+          <ul>
+            <li>Search ITTs</li>
+            <ul>
+              <li>Trading Pair</li><!-- dropdown/search/autofill (?) -->
+              <li>Exchange Rate</li><!-- tokenA per tokenB -->
+              <li></li>
+            </ul>
+            <li>Submit POI on this ITT</li>
+            <li>Move to Challenge</li>
+          </ul>
         </div>
       </div>
       <!-- BOTTOM DRAWER -->
@@ -218,39 +227,154 @@
         </label>
         <div class='panel'>
           <input type='checkbox' name='togAddITT' id='togAddITTChk'>
-          <label for='togAddITTChk' class='btn acc'>Add ITT</label>
-          <form> <!-- input types can be number/range as appropriate -->
+          <label title='Provide Liquidity by Broadcasting an Intent to Trade'
+                 for='togAddITTChk' class='btn acc'>Add ITT</label>
+          <form class='clearfix'>
+          <!-- input types can be number/range as appropriate -->
             <table>
+              <!-- Disabled for reference implementation -->
+              <!--
               <tr>
-                <td><label for='ITTamt'>Amount:</label></td>
-                <td><input id='ITTamt' name='ITTamt' type='text'></td>
+                <td>Message Type:</td>
+                <td>
+                  <label for='ITTpubMsg'>Public:</label>
+                  <input id='ITTpubMsg' name='ITTmsg' type='radio' checked>
+                  <label for='ITTpvtMsg'>Private:</label>
+                  <input id='ITTpvtMsg' name='ITTmsg' type='radio'>
+                </td>
+              </tr>
+                -->
+              <tr>
+                <td>
+                  <label for='ITTchPer' title='# of blocks'>
+                    Challenge Period:
+                  </label>
+                </td>
+                <td><input id='ITTchPer' name='ITTchPer' type='text'></td>
               </tr>
               <tr>
-                <td><label for='ITTforFee'>Forfeiture Fee:</label></td>
+                <td>
+                  <label for='ITTforFee' title='Amount of offer at stake'>
+                    Forfeiture Fee:
+                  </label>
+                </td>
                 <td><input id='ITTforFee' name='ITTforFee' type='text'></td>
               </tr>
               <tr>
-                <td><label for='ITTchPer'>Challenge Period:</label></td>
-                <td><input id='ITTchPer' name='ITTchPer' type='text'></td>
+                <td><label for='ITTamtA'>Amount (Token A):</label></td>
+                <td><input id='ITTamtA' name='ITTamtA' type='text'></td>
+              </tr>
+              <tr>
+                <td><label for='ITTamtB'>Amount (Token B):</label></td>
+                <td><input id='ITTamtB' name='ITTamtB' type='text'></td>
+              </tr>
+              <tr>
+                <td><label for='ITTxRate'>Exchange Rate:</label></td>
+                <td><input id='ITTxRate' name='ITTxRate' type='text'></td>
+              </tr>
+              <tr>
+                <td>Order Type:</td>
+                <td>
+                  <label for='ITTordLmt'>Limit:</label>
+                  <input id='ITTordLmt' name='ITTordType' type='radio' checked>
+                  <label for='ITTordStp'>Stop:</label>
+                  <input id='ITTordStp' name='ITTordType' type='radio'>
+                </td>
+              </tr>
+              <!-- Disabled for reference implementation -->
+              <!--
+              <tr>
+                <td>Enable Partial Fill?</td>
+                <td>
+                  <label for='ITTptFillY'>Yes:</label>
+                  <input id='ITTptFillY' name='ITTptFill' type='radio' checked>
+                  <label for='ITTptFillN'>No:</label>
+                  <input id='ITTptFillN' name='ITTptFill' type='radio'>
+                </td>
+              </tr>
+                -->
+            </table>
+            <button class='btn nxt' title='This just refreshes the page.'>
+              Preview Order
+            </button>
+            <!-- Reference: https://beaconexchange.io/beacon.pdf -->
+            <!-- Order Preview -->
+            <!--
+            <table>
+              <tr>
+                <td rowspan='3'>Party Information</td>
+                <td>Beacon contract address</td>
+              </tr>
+              <tr>
+                <td>Your network node ID</td>
+              </tr>
+              <tr>
+                <td>Your Ethereum address</td>
+              </tr>
+              <tr>
+                <td rowspan='5'>Terms</td>
+                <td>Have _____ Token A</td>
+              </tr>
+              <tr>
+                <td>Want _____ Token B</td>
+              </tr>
+              <tr>
+                <td>Willing to forfeit _____ Token A</td>
+              </tr>
+              <tr>
+                <td>Challenge period is _____ blocks</td>
               </tr>
             </table>
-            <!--
-            <label for='ITTamt'>Amount:</label>
-            <input id='ITTamt' name='ITTamt' type='text'><br>
-            <label for='ITTforFee'>Forfeiture Fee:</label>
-            <input id='ITTforFee' name='ITTforFee' type='text'><br>
-            <label for='ITTchPer'>Challenge Period:</label>
-            <input id='ITTchPer' name='ITTchPer' type='text'><br>
+            <input type="submit" value="Cancel" class='btn'>
+            <input type="submit" value="Sign Order" class='btn'>
               -->
+            <!-- Order Confirmation (Bumps to History) -->
             <!--
-            <label for='ITTpartFill'>Enable Partial Fills?</label>
-            <input id='ITTpartFill' name='ITTpartFill' type='checkbox' disabled><br>
-              -->
-            <input type="submit" value="Submit" class='btn'>
+            <table>
+              <tr>
+                <td rowspan='3'>Party Information</td>
+                <td>Beacon contract address</td>
+              </tr>
+              <tr>
+                <td>Your network node ID</td>
+              </tr>
+              <tr>
+                <td>Your Ethereum address</td>
+              </tr>
+              <tr>
+                <td rowspan='5'>Terms</td>
+                <td>Have _____ Token A</td>
+              </tr>
+              <tr>
+                <td>Want _____ Token B</td>
+              </tr>
+              <tr>
+                <td>Willing to forfeit _____ Token A</td>
+              </tr>
+              <tr>
+                <td>Challenge period is _____ blocks</td>
+              </tr>
+              <tr>
+                <td rowspan='2'>Binder</td>
+                <td>Your nonce for this ITT</td>
+              </tr>
+              <tr>
+                <td>Your digital signature</td>
+              </tr>
+            </table>
+            -->
           </form>
           <ul><!-- Option to toggle between verical & horizontal layout -->
             <li>Outstanding ITTs:</li>
+            <ul>
+              <li>Everyone's ITTs:</li>
+              <li>Your ITTs:</li><!-- alt: My ITTs-->
+            </ul>
             <li>Filled ITTs:</li>
+            <ul>
+              <li>Everyone's ITTs:</li>
+              <li>Your ITTs:</li><!-- alt: My ITTs-->
+            </ul>
           </ul><!-- Option to switch between tabs vs side-by-side views -->
         </div>
       </div>

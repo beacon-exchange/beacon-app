@@ -208,8 +208,27 @@ p { padding: var(--padDefaultFull, 1em); }
   }
   form { padding: var(--padDefaultSplit, 0.5em); }
   table { border-spacing: var(--padDefaultSplit, 0.5em); }
-  label { white-space: nowrap; }
+  td { white-space: nowrap; }
+  td:nth-of-type(2) { text-align: right; }
   input[type=text] { width: 100%; }
+  button.nxt, button.bck {
+    margin: 0.5em 1ch; // fallback
+    margin: calc(var(--padTopBot)/2) calc(var(--padLftRgt)/2);
+  }
+  button.nxt::after, button.bck::before {
+    content: ' \27A4';
+    display: inline-block;
+  }
+  button.nxt {
+    float: right;
+    &::after { margin-left: 1ch; }
+  }
+  button.bck {
+    float: left;
+    &::before { margin-right: 1ch;
+      @include prefixS(transform, rotate(180deg), webkit moz ms o);
+    }
+  }
   input[type=submit] {
     margin: 0.5em auto; // fallback
     margin: calc(var(--padTopBot)/2) auto; // center horiz
@@ -225,8 +244,13 @@ p { padding: var(--padDefaultFull, 1em); }
 :checked ~ .acc::before, :checked ~ .acc::after {
   @include prefixS(transform, rotate(-90deg), webkit moz ms o);
 }
-// input[type=checkbox] {
+// input[type=checkbox] { // boolean only (for on/off switches)
 //   display: none; // hides checkboxes
 //   &:not(:checked) ~ _____ { display: none; } // not checked = shut
-//   &:checked ~ _____ { display: block; } // checked = open
-// }
+//   &:checked ~ _____ { display: _____block; } // checked = open
+// } // use radio for relatively equivalent or matter-of-preference options
+.clearfix::after {
+  content: '';
+  clear: both;
+  display: table;
+}
