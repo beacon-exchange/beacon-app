@@ -135,10 +135,12 @@
         <!-- add more here -->
         <li title='View Documentation'>
           <!-- Maybe iframe this in a push panel? -->
+          <!-- DONATE TO BEACON -->
           <i class='fas'>&#xf059;</i>
         </li>
         <li title='View Terms of Use'>
           <!-- Maybe iframe this in a modal? -->
+          <!-- DONATE TO BEACON -->
           <i class='fas'>&#xf70e;</i>
         </li>
       </ul>
@@ -246,7 +248,8 @@
                 -->
               <tr>
                 <td>
-                  <label for='ITTchPer' title='# of blocks'>
+                  <label for='ITTchPer'
+                    title='Timeframe for you to respond&#10;(in # of blocks)'>
                     Challenge Period:
                   </label>
                 </td>
@@ -254,30 +257,73 @@
               </tr>
               <tr>
                 <td>
-                  <label for='ITTforFee' title='Amount of offer at stake'>
-                    Forfeiture Fee:
+                  <label for='ITTforFee' title='Portion of offer at stake'>
+                    Forfeiture Fee (%):
                   </label>
                 </td>
                 <td><input id='ITTforFee' name='ITTforFee' type='text'></td>
               </tr>
               <tr>
-                <td><label for='ITTamtA'>Amount (Token A):</label></td>
-                <td><input id='ITTamtA' name='ITTamtA' type='text'></td>
+                <td>
+                  <label for='ITToffTok' title='From your Beacon account'>
+                    Offering Token:
+                  </label>
+                </td>
+                <td><input id='ITToffTok' name='ITToffTok' type='text'></td>
               </tr>
               <tr>
-                <td><label for='ITTamtB'>Amount (Token B):</label></td>
-                <td><input id='ITTamtB' name='ITTamtB' type='text'></td>
+                <td>
+                  <label for='ITToffTokAmt' title='From your Beacon account'>
+                    Offering Amount:
+                  </label>
+                </td>
+                <td>
+                  <input id='ITToffTokAmt' name='ITToffTokAmt' type='text'>
+                </td>
               </tr>
               <tr>
-                <td><label for='ITTxRate'>Exchange Rate:</label></td>
+                <td>
+                  <label for='ITTreqTok' title='From their Beacon account'>
+                    Requesting Token:
+                  </label>
+                </td>
+                <td><input id='ITTreqTok' name='ITTreqTok' type='text'></td>
+              </tr>
+              <tr>
+                <td>
+                  <label for='ITTreqTokAmt' title='From their Beacon account'>
+                    Requesting Amount:
+                  </label>
+                </td>
+                <td>
+                  <input id='ITTreqTokAmt' name='ITTreqTokAmt' type='text'>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for='ITTxRate' title='Computed for you'>
+                    Exchange Rate:
+                  </label>
+                </td>
+                <!-- Exchange Rate:
+                     (ITToffTokAmt ITToffTok per ITTreqTokAmt ITTreqTok)
+                      divided by ITTreqTokAmt
+                     or
+                     (ITTreqTokAmt ITTreqTok per ITToffTokAmt ITToffTok)
+                      divided by ITToffTokAmt
+                  -->
                 <td><input id='ITTxRate' name='ITTxRate' type='text'></td>
               </tr>
               <tr>
                 <td>Order Type:</td>
                 <td>
-                  <label for='ITTordLmt'>Limit:</label>
+                  <label for='ITTordLmt' title='This exchange rate or better'>
+                    Limit:
+                  </label>
                   <input id='ITTordLmt' name='ITTordType' type='radio' checked>
-                  <label for='ITTordStp'>Stop:</label>
+                  <label for='ITTordStp' title='This exchange rate only'>
+                    Stop:
+                  </label>
                   <input id='ITTordStp' name='ITTordType' type='radio'>
                 </td>
               </tr>
@@ -364,6 +410,9 @@
             </table>
             -->
           </form>
+          <p>Mabye 2 top tabs & 2 side tabs for this?
+            (Can also consider other layouts.)
+          </p>
           <ul><!-- Option to toggle between verical & horizontal layout -->
             <li>Outstanding ITTs:</li>
             <ul>
