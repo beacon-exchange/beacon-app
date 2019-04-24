@@ -7,4 +7,5 @@ services:
     volumes:
       - .:/app
     command:
-      - serve
+      - make
+      - dev-loop

@@ -1,0 +1,215 @@
+<!-- Reference: 80-character line... 80-character line... 80-character line. -->
+
+<!DOCTYPE html> <!-- Requires HTML5 or later. Not XHTML. -->
+<html lang='en'>
+<head>
+
+<!-- ========== ANALYTICS ================================================== -->
+
+  <!-- May want to add some tracking & analytics scripts here. -->
+
+<!-- ========== METADATA =================================================== -->
+
+  <!-- Robots.txt specifies exclusions & sitemap.xml specifies inclusions -->
+  <meta name='robots' content='index, follow'> <!-- Default/Reminder -->
+  <!-- Index = 'crawl this' & follow = 'pass link equity to all links' -->
+  <base target='_self'> <!-- href='https://thisWebsite.com/' -->
+  <!-- Placeholder for FavIcons when Assets folder is set up to hold them -->
+  <link rel='icon' href='assets/fav/icon.png' type='image/png' sizes='512x512'>
+  <!--
+  <link rel='icon' href='assets/fav/icon65.png' type='image/png' sizes='65x65'>
+  <link rel='icon' href='assets/fav/icon32.png' type='image/png' sizes='32x32'>
+  <link rel='icon' href='assets/fav/icon16.png' type='image/png' sizes='16x16'>
+  <link rel='icon' href='assets/fav/icon16.ico' type='image/ico' sizes='16x16'>
+  -->
+  <!-- Although currently no major browser supports the sizes attribute, (i.e.
+       will be ignored,) it is still considered good hygiene to include them.
+    -->
+  <meta name='theme-color' content='#808080'> <!-- Candy for Android Chrome -->
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <meta charset='utf-8'>
+  <!-- https://developers.google.com/fonts/docs/getting_started
+       https://developers.google.com/fonts/docs/technical_considerations
+       StackOverflow recommends standard over @import due to load deferral
+       Supposedly, consolidating these into one request improves load time
+       Further, experimenting with direct integration with stylesheet
+       (See notes on this method's advantages and disadvantages in style.scss)
+       Open Sans is for body text (400=standard, 700=bold, i=italic)
+       Use in lieu of interpolated bold font-weight & italic font-style
+       Oswald semibold is for headings & titles
+       If performance suffers, remove 400i, 700, & 700i (interpolate instead)
+       Alternatively, woff2 files uploaded to server but not yet integrated
+    -->
+  <!--
+  <link rel='stylesheet' href=
+    'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Oswald:600'
+  >
+  -->
+
+  <!-- SEO Note: Use numbers, dates, variants, punctuation, & action words. -->
+  
+  <!-- SEO Note: Appears on tab next to favicon, & default bookmark name -->
+  <title>Beacon App - Decentralized Asset Exchange Protocol | Home</title>
+  <meta name='author' content='Beacon'>
+  <!-- SEO Note (2018Q1): Keywords should be 10-20 words long. -->
+  <meta name='keywords' content=
+    'Cryptocurrency Exchange,
+    Electronic Trading,
+    Decentralized Exchange,
+    Peer-to-Peer,
+    White Paper,
+    Cryptocurrency,
+    Blockchain'
+  > <!-- SEO Note (2018Q1): Title should not exceed 50 characters. -->
+  <!-- SEO Note (2018Q1): Description should be 150-300 characters long. -->
+  <meta name='description' content=
+    'Beacon is a protocol for peer-to-peer exchange of cryptocurrency assets.
+    Trading on Beacon is permissionless, fee-free, decentralized, fast and
+    impartial!'
+  >
+
+<!-- ========== CASCADING STYLE SHEETS ===================================== -->
+
+  <!-- Font Awesome -->
+  <link rel='stylesheet'
+        href='https://use.fontawesome.com/releases/v5.6.3/css/all.css'
+        integrity='sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/'
+        crossorigin='anonymous'>
+  <!-- Need ruby to build scss ... -->
+  <link rel='stylesheet' href='styles.css'>
+  
+<!-- ========== OTHER BEFORE-DOCUMENT LOAD SCRIPTS ========================= -->
+
+  <script src='https://code.jquery.com/jquery-3.3.1.min.js'
+          integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8='
+          crossorigin='anonymous'></script>
+  <!--
+  <script src='main.js'></script>
+  -->
+  
+</head>
+<body>
+  <div id='FAKEROOT'>
+    <div id='settings' class='togSettingsRad1'>
+      <ul>
+        <li>Settings Bar:</li>
+        <li title='Move Settings Bar'>
+          <div>
+            <input type='radio' name='togSettings' id='togSettingsRad1' checked>
+            <label for='togSettingsRad1'>
+              <i class='fas barTop'>&#xf2d0;</i>
+            </label>
+          </div><!-- must have no gap between elements here --><div>
+            <input type='radio' name='togSettings' id='togSettingsRad2'>
+            <label for='togSettingsRad2'>
+              <i class='fas barBot'>&#xf2d0;</i>
+            </label>
+          </div>
+        </li>
+        <li title='Set Theme'><i class='fas'>&#xf53f;</i></li>
+        <li title='Integrate Wallet'><i class='fas'>&#xf555;</i></li>
+        <li title='Synchronize Node'><i class='fas'>&#xf2f1;</i></li>
+        <li title='Subscribe to Topics (Listen for Token Pairs)'>
+          <i class='fas'>&#xf550;</i>
+        </li>
+        <!-- add more here -->
+        <li title='View Documentation'><i class='fas'>&#xf059;</i></li>
+        <li title='View Terms of Use'><i class='fas'>&#xf70e;</i></li>
+      </ul>
+    </div>
+    <!-- FLOOR RUG -->
+    <div id='publayer' class='togSettingsRad1'>
+      <nav><p>Public Layer Menu/Nav</p></nav>
+      <div>
+        <p>Public Layer Content</p>
+      </div>
+    </div>
+    <!-- DRESSERs -->
+    <div id='dresserRgt' class='togSettingsRad1'>
+      <!-- TOP DRAWER -->
+      <div id='pois' class='drawerTop'>
+        <input type='checkbox' name='togPOIs' id='togPOIsChk' checked>
+        <label for='togPOIsChk' class='handle' title='Open/Shut Drawer'>
+          <ul>
+            <li class='endLft'><i class='fas'>&#xf103;</i></li>
+            <li> POIs </li>
+            <li class='endRgt'><i class='fas'>&#xf103;</i></li>
+          </ul>
+        </label>
+        <div class='panel'>
+          <p>POIs Content ... More
+             POIs Content ... More
+             POIs Content ...
+          </p>
+        </div>
+      </div>
+      <!-- BOTTOM DRAWER -->
+      <div id='itts' class='drawerBot'>
+        <input type='checkbox' name='togITTs' id='togITTsChk' checked>
+        <label for='togITTsChk' class='handle' title='Open/Shut Drawer'>
+          <ul>
+            <li class='endLft'><i class='fas'>&#xf103;</i></li>
+            <li> ITTs </li>
+            <li class='endRgt'><i class='fas'>&#xf103;</i></li>
+          </ul>
+        </label>
+        <div class='panel'>
+          <p>ITTs Content ... More
+             ITTs Content ... More
+             ITTs Content ...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id='dresserLft' class='togSettingsRad1'>
+      <!-- TOP DRAWER -->
+      <div id='wallet' class='drawerTop'>
+        <input type='checkbox' name='togWallet' id='togWalletChk' checked>
+        <label for='togWalletChk' class='handle' title='Open/Shut Drawer'>
+          <ul>
+            <li class='endLft'><i class='fas'>&#xf103;</i></li>
+            <li> Wallet </li>
+            <li class='endRgt'><i class='fas'>&#xf103;</i></li>
+          </ul>
+        </label>
+        <div class='panel'>
+          <p>Wallet Content ... More
+             Wallet Content ... More
+             Wallet Content ...
+          </p>
+        </div>
+      </div>
+      <!-- BOTTOM DRAWER -->
+      <div id='beacon' class='drawerBot'>
+        <input type='checkbox' name='togBeacon' id='togBeaconChk' checked>
+        <label for='togBeaconChk' class='handle' title='Open/Shut Drawer'>
+          <ul>
+            <li class='endLft'><i class='fas'>&#xf103;</i></li>
+            <li> Beacon </li>
+            <li class='endRgt'><i class='fas'>&#xf103;</i></li>
+          </ul>
+        </label>
+        <div class='panel'>
+          <p>Beacon Content ... More
+             Beacon Content ... More
+             Beacon Content ...
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+<!-- ========== AFTER-DOCUMENT LOAD SCRIPTS ================================ -->
+
+  <!-- Put scripts at the end to speed up page loading for older browsers -->
+  <script src='slim.js'></script>
+  <!-- Just in case the user disabled scripts on their browser... -->
+  <noscript>Something on this page not working?
+     If available, try enabling scripts on your browser.
+     Otherwise, it's possible that your browser doesn't support JavaScript.
+  </noscript>
+    
+</body>
+</html>
+
+<!-- Reference: 80-character line... 80-character line... 80-character line. -->
