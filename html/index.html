@@ -167,28 +167,188 @@
         <div class='panel'>
           <!-- Reference: https://github.com/ethereum/wiki/wiki/JSON-RPC -->
           <!-- Reference: https://metamask.github.io/metamask-docs/ -->
-          <ul>
-            <li>Deposit Amount into Beacon Smart Contract</li>
-            <ul>
-              <li>Choose Account: [Drop-Down]Choose... Add Account</li>
-              <li>Choose Token: [Drop-Down]Choose... Add Token (Current Balance)</li>
-              <li>Choose Amount: [Textfield?]</li>
-              <li>Choose Gas Price: [Textfield?]</li>
-              <li>Choose Gas Limit: [Textfield?]</li>
-              <li>To Target Address: [auto populate deploy address]</li>
-              <li>Preview</li>
-            </ul>
-            <li>Complete Withdrawal from Beacon Smart Contract</li>
-            <ul>
-              <li>From Target Address: [auto populate deploy address]</li>
-              <li>Choose Token: [Drop-Down]Choose... Add Token (Current Balance)</li>
-              <li>Choose Amount: [Textfield?]</li>
-              <li>Choose Account: [Drop-Down]Choose... Add Account</li>
-              <li>Choose Gas Price: [Textfield?]</li>
-              <li>Choose Gas Limit: [Textfield?]</li>
-              <li>Preview</li>
-            </ul>
-          </ul>
+          <input type='checkbox' name='togAmtDep' id='togAmtDepChk'>
+          <label title='Deposit amount into Beacon Smart Contract'
+                 for='togAmtDepChk' class='btn acc'>Deposit</label>
+          <form class='clearfix'>
+          <!-- input types can be number/range as appropriate -->
+            <table>
+              <tr>
+                <td>
+                  <label for='orgnAcct' title='Choose from available or add'>
+                    Choose Account:
+                  </label>
+                </td>
+                <td>
+                  <select id='orgnAcct' name='orgnAcct' required>
+                    <option value='accounts[0]'>nn1/addr1#</option>
+                    <option value='accounts[1]'>nn2/addr2#</option>
+                    <option value='accounts[2]'>nn3/addr3#</option>
+                    <option value='orgnAcctAdd'>Add another account</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for='orgnAcctTok' title='Choose from available or add'>
+                    Choose Token:
+                  </label>
+                </td>
+                <td>
+                  <select id='orgnAcctTok' name='orgnAcctTok' required>
+                    <option value='tokens[0]'>symbol1/addr1#</option>
+                    <option value='tokens[1]'>symbol2/addr2#</option>
+                    <option value='tokens[2]'>symbol3/addr3#</option>
+                    <option value='orgnAcctTokAdd'>Add another token</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Available Balance:</td>
+                <td>(auto-populated)</td>
+              </tr>
+              <tr>
+                <td>
+                  <label for='orgnAcctTokAmt' title=''>
+                    Choose Amount:
+                  </label>
+                </td>
+                <td>
+                  <input id='orgnAcctTokAmt' name='orgnAcctTokAmt' type='text' required>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for='depGasPrice' title='(GWEI)'>
+                    Choose Gas Price:
+                  </label>
+                </td>
+                <td>
+                  <input id='depGasPrice' name='depGasPrice' type='text' required>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for='depGasLimit' title=''>
+                    Choose Gas Amount:
+                  </label>
+                </td>
+                <td>
+                  <input id='depGasLimit' name='depGasLimit' type='text' required>
+                </td>
+              </tr>
+              <tr>
+                <td>Contract Address:</td>
+                <td>(auto-populated)</td>
+              </tr>
+              <!--
+              <tr>
+                <td>
+                  <label for='addrBSMdep' title='Can change this in Settings'>
+                    Contract Address:
+                  </label>
+                </td>
+                <td>
+                  <input id='addrBSMdep' name='addrBSMdep' type='text' required>
+                </td>
+              </tr>
+                -->
+            </table>
+            <button type='button' class='btn nxt' title='Does nothing.'>
+              Preview
+            </button>
+          </form>
+          <input type='checkbox' name='togAmtWdr' id='togAmtWdrChk'>
+          <label title='Withdraw amount from Beacon Smart Contract'
+                 for='togAmtWdrChk' class='btn acc'>Withdraw</label>
+          <form class='clearfix'>
+          <!-- input types can be number/range as appropriate -->
+            <table>
+              <!--
+              <tr>
+                <td>
+                  <label for='addrBSMwdr' title='Can change this in Settings'>
+                    Contract Address:
+                  </label>
+                </td>
+                <td>
+                  <input id='addrBSMwdr' name='addrBSMwdr' type='text' required>
+                </td>
+              </tr>
+                -->
+              <tr>
+                <td>Contract Address:</td>
+                <td>(auto-populated)</td>
+              </tr>
+              <tr>
+                <td>
+                  <label for='destAcctTok' title='Choose from available or add'>
+                    Choose Token:
+                  </label>
+                </td>
+                <td>
+                  <select id='destAcctTok' name='destAcctTok' required>
+                    <option value='tokens[0]'>symbol1/addr1#</option>
+                    <option value='tokens[1]'>symbol2/addr2#</option>
+                    <option value='tokens[2]'>symbol3/addr3#</option>
+                    <option value='destAcctTokAdd'>Add another token</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Available Balance:</td>
+                <td>(auto-populated)</td>
+              </tr>
+              <tr>
+                <td>
+                  <label for='destAcctTokAmt' title=''>
+                    Choose Amount:
+                  </label>
+                </td>
+                <td>
+                  <input id='destAcctTokAmt' name='destAcctTokAmt' type='text' required>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for='destAcct' title='Choose from available or add'>
+                    Choose Account:
+                  </label>
+                </td>
+                <td>
+                  <select id='destAcct' name='destAcct' required>
+                    <option value='accounts[0]'>nn1/addr1#</option>
+                    <option value='accounts[1]'>nn2/addr2#</option>
+                    <option value='accounts[2]'>nn3/addr3#</option>
+                    <option value='destAcctAdd'>Add another account</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for='wdrGasPrice' title='(GWEI)'>
+                    Choose Gas Price:
+                  </label>
+                </td>
+                <td>
+                  <input id='wdrGasPrice' name='wdrGasPrice' type='text' required>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for='wdrGasLimit' title=''>
+                    Choose Gas Amount:
+                  </label>
+                </td>
+                <td>
+                  <input id='wdrGasLimit' name='wdrGasLimit' type='text' required>
+                </td>
+              </tr>
+            </table>
+            <button type='button' class='btn nxt' title='Does nothing.'>
+              Preview
+            </button>
+          </form>
         </div>
       </div>
       <!-- BOTTOM DRAWER -->
@@ -306,7 +466,7 @@
                     title='Timeframe for you to respond&#10;(in # of blocks)'>
                     Challenge Period:
                   </label>
-                </td>
+                </td><!-- optional (defaults to null?) -->
                 <td><input id='ITTchPer' name='ITTchPer' type='text'></td>
               </tr>
               <tr>
@@ -314,7 +474,7 @@
                   <label for='ITTforFee' title='Portion of offer at stake'>
                     Forfeiture Fee (%):
                   </label><!-- This is deceptive because it's separate. -->
-                </td>
+                </td><!-- optional (defaults to 0?) -->
                 <td><input id='ITTforFee' name='ITTforFee' type='text'></td>
               </tr>
               <tr>
@@ -323,7 +483,7 @@
                     Offering Token:
                   </label>
                 </td>
-                <td><input id='ITToffTok' name='ITToffTok' type='text'></td>
+                <td><input id='ITToffTok' name='ITToffTok' type='text' required></td>
               </tr>
               <tr>
                 <td>
@@ -332,7 +492,7 @@
                   </label>
                 </td>
                 <td>
-                  <input id='ITToffTokAmt' name='ITToffTokAmt' type='text'>
+                  <input id='ITToffTokAmt' name='ITToffTokAmt' type='text' required>
                 </td>
               </tr>
               <tr>
@@ -341,7 +501,7 @@
                     Requesting Token:
                   </label>
                 </td>
-                <td><input id='ITTreqTok' name='ITTreqTok' type='text'></td>
+                <td><input id='ITTreqTok' name='ITTreqTok' type='text' required></td>
               </tr>
               <tr>
                 <td>
@@ -350,7 +510,7 @@
                   </label>
                 </td>
                 <td>
-                  <input id='ITTreqTokAmt' name='ITTreqTokAmt' type='text'>
+                  <input id='ITTreqTokAmt' name='ITTreqTokAmt' type='text' required>
                 </td>
               </tr>
               <tr>
@@ -394,7 +554,7 @@
               </tr>
                 -->
             </table>
-            <button class='btn nxt' title='This just refreshes the page.'>
+            <button type='button' class='btn nxt' title='Does nothing.'>
               Preview Order
             </button>
             <!-- Reference: https://beaconexchange.io/beacon.pdf -->
