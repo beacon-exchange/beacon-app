@@ -1,0 +1,35 @@
+.tab {
+  overflow: hidden;
+  border: 1px solid #121420;
+  background-color: #121420;
+  border-bottom: 0.001px solid #ccc;
+  margin-bottom: 10%;
+}
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  width: 50%;
+}
+.tab button:hover {
+  border-bottom: 1px solid yellow;
+}
+
+/* Create an active/current tablink class */
+.tab button:active {
+    
+  border-bottom: 1px solid yellow;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}

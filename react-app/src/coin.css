@@ -1,0 +1,50 @@
+.coinMarkets{
+    display: flex;
+    flex-direction: row;
+    flex-basis: 100%;
+    padding: 2%;
+    background-color:#23395b; 
+    color: #e8eef2;
+    flex-wrap: wrap;
+}
+.coin-tabs{
+    background-color: #fefffe;
+    color: #23395b;
+    /* padding: 2%; */
+    display: flex;
+    flex-direction: row;
+    border-bottom:2px solid #5c80bc;
+}
+.coin-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+    flex-basis: 100%;
+    background-color: #e8eef2;
+    flex-wrap: wrap;
+}
+.coin-column button{
+    background-color: #e8eef2;
+    border: none;
+    height: 30px;
+}
+.coin-column button:hover{
+    background-color: #5c80bc;
+}
+.cointrade{
+    background-color: #5c80bc;
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    border-bottom:2px solid #5c80bc;
+}
+.cointrade-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+    flex-basis: 100%;
+    background-color:  #5c80bc;
+    flex-wrap: wrap;
+}

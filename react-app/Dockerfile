@@ -12,8 +12,10 @@ COPY package.json /app/package.json
 COPY public /app/public
 COPY src /app/src
 RUN npm cache clean --force
-RUN npm install webpack@4.41.0 
+RUN npm install webpack@4.41.0
 RUN npm install core-js@3
+RUN npm install react-router-dom@5.1.2
+RUN npm install react-dom@16.12.0
 RUN npm install
 
 #start app
