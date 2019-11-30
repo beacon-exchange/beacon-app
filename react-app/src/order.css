@@ -1,0 +1,82 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+
+.column{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 5%;
+    padding-left: 2%;
+}
+.second{
+    flex: 2;
+    justify-content: flex-end;
+}
+.first{
+    flex: 1;
+}
+.third{
+    flex: 1;
+    padding-left: 5%;
+}
+
+.select{
+    cursor: pointer;
+  position : relative;
+  max-width:  20em;
+  width: 100%;
+
+   color: #414141;
+  display: block;
+  font: 400 17px/2em 'Source Sans Pro', sans-serif;
+
+  padding: 1px 0;
+  height: 35px;
+  opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  background: none transparent;
+  border: 0 none;
+}
+.select-box1 {
+  background: #ececec;
+}
+
+.label {
+  position: relative;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.open .label::after {
+   content: "▲";
+}
+.label::after {
+  content: "▼";
+  font-size: 12px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 5px 15px;
+  border-left: 5px solid #fff;
+}
+input{
+    width: 90%;
+}
+.buy{
+    width: 100%;
+    background-color: green;
+    border: none;
+    height: 35px;
+    color: #fff;
+}
+.sell{
+    width: 100%;
+    background-color: red;
+    border: none;
+    height: 35px;
+    color: #fff;
+}

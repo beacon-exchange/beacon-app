@@ -1,0 +1,27 @@
+.trade-title{
+    display: flex;
+    flex:1;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex-basis: 100%;
+    background-color: #242b35;
+    justify-content: center;
+    padding: 1%;
+}
+.trade-table{
+    display: flex;
+    flex:1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    background-color: #2a323e;
+    justify-content: center;
+    padding: 1%;
+}
+.trade-column{
+    display: flex;
+    flex-wrap: wrap;
+    flex:1;
+    flex-direction: column;
+    flex-basis: 100%;
+}

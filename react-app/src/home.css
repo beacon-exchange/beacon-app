@@ -1,0 +1,96 @@
+.room{
+    height: 100vh;
+    display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.coin {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+ background-color: #121420;
+ box-shadow: 5px 5px 5px 5px #1e242c;
+ color: white;
+  
+}
+.trade{
+    display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 2;
+  background-color:#292b36;
+}
+.chart{
+  box-shadow: 5px 5px 5px 5px #1e242c;
+}
+.row1.row2{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.row1{
+    margin: 1%;
+    justify-content: center;
+    width: 98%;
+    height: 400px;
+    /* box-shadow: 2px 2px 2px 2px white; */
+}
+.row2{
+    /* background-color: orange; */
+    justify-content: center;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-bottom: 1%;
+}
+.market {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+ background-color: #121420;
+ justify-content: center;
+ color: white;
+ box-shadow: 5px 5px 5px 5px #1e242c;
+  
+}
+
+.bids1{
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  background-color: #303947;
+  margin-right: 1%;
+  box-shadow: 5px 5px 5px 5px #1e242c;
+  color: white;
+}
+.bids2{
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  background-color: #364050;
+  box-shadow: 5px 5px 5px 5px #1e242c;
+  color: white;
+}
+.order{
+    display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 2;
+  background-color: #121420;
+  margin-right: 1%;
+  color: white;
+  justify-content:flex-start;
+  box-shadow: 5px 5px 5px 5px #1e242c;
+}
+.orderPage{
+      display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}

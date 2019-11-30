@@ -1,0 +1,39 @@
+.history{
+    background-color: #242B35;
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    flex-basis: 100%;
+    border-bottom: 1px solid #1e242c;
+    /* width: 100%; */
+}
+.historytab{
+    background-color: #2A323E;
+    /* padding: 1%; */
+    display: flex;
+    flex-direction: row;
+    flex-basis: 100%;
+     width: 100%;
+
+}
+
+.mytrades{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    /* margin: 1%; */
+     width: 50%;
+    box-shadow: 5px 5px 5px 0px #1e242c;
+    flex: 1;
+
+}
+.mymarkets{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+     margin-left: 0.5%;
+      width: 50%;
+      flex: 1;
+    box-shadow: 5px 5px 5px 0px #1e242c;
+
+}

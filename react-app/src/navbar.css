@@ -1,0 +1,108 @@
+.nav{
+    background-color: #121420;
+    width: 100% !important;
+    height: 20% !important;
+    color: white;
+    align-self: center;
+    align-content: center;
+    box-shadow: 2px 2px 2px #888888;
+    display: flex;
+    font-size: 20px;
+    justify-content: flex-start;
+    justify-self: center;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-bottom: 0.01px solid white;
+  
+
+}
+.logo{
+    padding-left: 1%;
+    flex: 4;
+}
+.links{
+    flex: 1;
+}
+body{
+    margin: 0%;
+}
+.logoLink{
+    text-decoration: none;
+    color: white;
+
+}
+.btnRow{
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+}
+.btnCol{
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: auto;
+    margin-right: 1%;
+    
+}
+.btnRow button{
+   margin: 3%
+}
+#btn1{
+    color: white !important;
+text-transform: uppercase;
+background: transparent;
+padding: 8px;
+border: 3px solid white !important;
+border-radius: 6px;
+display: inline-block;
+transition: all 0.3s ease 0s;
+}
+#btn1:hover{
+    color: #494949 !important;
+border-radius: 50px;
+border-color: #494949 !important;
+transition: all 0.3s ease 0s;
+}
+#btn2{
+    border: none;
+background: #404040;
+color: #ffffff !important;
+font-weight: 100;
+padding: 10px;
+text-transform: uppercase;
+border-radius: 6px;
+display: inline-block;
+transition: all 0.3s ease 0s;
+}
+#btn2:hover{
+    /* color: #404040 !important; */
+    color: #ffffffff !important;
+font-weight: 700 !important;
+letter-spacing: 3px;
+background: none;
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+transition: all 0.3s ease 0s;
+}
+#logo{
+    border: none;
+background: transparent;
+color: #ffffff !important;
+font-weight: 500;
+padding: 20px;
+text-transform: uppercase;
+border-radius: 6px;
+display: inline-block;
+transition: all 0.3s ease 0s;
+}
+#logo:hover{
+color: #404040 !important;
+font-weight:900 !important;
+letter-spacing: 3px;
+background: none;
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+transition: all 0.3s ease 0s;
+}
